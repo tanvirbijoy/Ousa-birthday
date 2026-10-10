@@ -1,343 +1,1054 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#150e20">
-<title>A Little World for You 💗</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#09090f">
+<title>Happy Birthday, Ousa ♡</title>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-:root{--bg:#150e20;--pink:#f5b4d0;--light:#ffe5ef;--muted:#cbbbd0;--card:#ffffff0c}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(ellipse at top,#48243e 0%,transparent 50%),radial-gradient(ellipse at bottom right,#302044,transparent 50%),var(--bg);color:#fff5fa;font-family:"DM Sans",sans-serif;min-height:100vh;overflow-x:hidden}
-button,input{font:inherit}
-button{cursor:pointer}
-h1,h2,h3{font-family:"Playfair Display",serif;font-weight:500}
-h1{font-size:clamp(2.7rem,9vw,5rem);line-height:1.12}
-h2{font-size:clamp(2rem,7vw,3rem)}
-p{line-height:1.85;color:var(--muted)}
-.hidden{display:none!important}
-.pink{color:var(--pink)}
-.eyebrow{text-transform:uppercase;letter-spacing:4px;font-size:11px;color:var(--pink)}
-button:focus-visible,input:focus-visible{outline:2px solid white;outline-offset:3px}
-.btn{border:0;border-radius:40px;padding:14px 24px;background:linear-gradient(135deg,#ffe0ec,#ef9cbe);color:#38172a;font-weight:700;transition:.2s}
-.btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px #f5b4d044}
-.outline{border:1px solid #ffffff30;border-radius:40px;padding:12px 20px;background:#ffffff09;color:white}
-#gate{min-height:100svh;display:grid;place-items:center;padding:24px}
-.gate-card{max-width:390px;width:100%;padding:35px 25px;text-align:center;border:1px solid #ffffff20;border-radius:28px;background:#ffffff09;backdrop-filter:blur(15px)}
-.gate-icon{font-size:42px}
-#password{display:block;width:100%;padding:14px;margin:18px 0 10px;background:#100b18;border:1px solid #ffffff25;border-radius:12px;color:white;text-align:center;letter-spacing:5px}
-#error{min-height:22px;color:#ffabc9;font-size:13px}
-.topbar{position:fixed;z-index:10;top:0;left:0;right:0;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(#150e20ee,transparent)}
-.brand{font-family:"Playfair Display",serif;color:var(--pink);font-size:17px}
-#counter{font-size:12px;color:var(--muted)}
-.progress{position:fixed;top:0;left:0;width:0;height:3px;background:var(--pink);z-index:15;transition:width .3s}
-#pages{padding:58px 18px 105px}
-.page{display:none;max-width:780px;min-height:calc(100svh - 165px);margin:auto;align-items:center;justify-content:center;flex-direction:column;text-align:center;animation:appear .6s ease}
-.page.active{display:flex}
-.page-content{width:100%;padding:22px 0}
-@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.hero-sub{max-width:510px;margin:0 auto 25px}
-.kitties{font-size:35px;display:flex;gap:24px;justify-content:center;margin:28px 0}
-.kitty{display:inline-block;animation:float 2.8s ease-in-out infinite}
-.kitty:nth-child(2){animation-delay:.5s}
-.kitty:nth-child(3){animation-delay:1s}
-@keyframes float{50%{transform:translateY(-9px) rotate(4deg)}}
-.sparkle{position:fixed;pointer-events:none;z-index:0;animation:fall linear forwards}
-@keyframes fall{from{transform:translateY(-10vh) rotate(0);opacity:0}15%{opacity:.8}to{transform:translateY(110vh) rotate(300deg);opacity:0}}
-.card{background:var(--card);border:1px solid #ffffff18;border-radius:22px;padding:25px;backdrop-filter:blur(8px)}
-.letter{max-width:600px;margin:auto;text-align:left;white-space:pre-line}
-.letter p{color:#f1dce9}
-.wishes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:28px}
-.wish{padding:22px 12px;border-radius:18px;background:#ffffff0a;border:1px solid #ffffff19;color:white;transition:.25s;min-height:120px}
-.wish:hover,.wish.open{background:#f5b4d01a;transform:translateY(-3px);border-color:#f5b4d077}
-.wish .emoji{font-size:28px;display:block;margin-bottom:9px}
-.wish small{display:block;color:var(--muted);line-height:1.6;margin-top:10px}
-.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px}
-.photo{aspect-ratio:4/5;border:1px dashed #f5b4d070;border-radius:18px;background:linear-gradient(145deg,#f5b4d018,#ffffff05);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;overflow:hidden;color:var(--muted)}
-.photo img{width:100%;height:100%;object-fit:cover;display:block}
-.photo span{font-size:32px}
-.photo small{font-size:12px;padding:0 8px}
-.cake-area{margin:32px auto 25px;max-width:320px}
-.cake{position:relative;width:180px;margin:0 auto;height:140px;cursor:pointer}
-.cake-base{position:absolute;bottom:0;left:0;width:180px;height:78px;background:linear-gradient(90deg,#bd709a,#f2b1ce,#bd709a);border-radius:10px 10px 18px 18px;box-shadow:0 12px 20px #0003}
-.cake-base:before{content:"";position:absolute;top:24px;left:0;right:0;height:10px;background:#ffe0ec;border-radius:50%}
-.cake-top{position:absolute;top:25px;left:12px;width:156px;height:42px;background:#ffd7e7;border-radius:50%}
-.candle{position:absolute;z-index:2;left:84px;top:0;width:12px;height:43px;border-radius:4px;background:repeating-linear-gradient(45deg,#fff 0 5px,#e78fb7 5px 10px)}
-.flame{position:absolute;top:-24px;left:0;width:12px;height:22px;background:radial-gradient(ellipse at bottom,#fff3a3 0%,#ffb33d 50%,#ff764d 80%);border-radius:50% 50% 45% 45%;transform-origin:bottom;animation:flicker .6s infinite alternate}
-@keyframes flicker{to{transform:rotate(7deg) scale(.9)}}
-.smoke{position:absolute;top:-30px;left:-5px;font-size:24px;opacity:0;pointer-events:none}
-.smoke.blow{animation:smoky 1.3s ease-out}
-@keyframes smoky{0%{opacity:.8;transform:translateY(0) scale(.5)}100%{opacity:0;transform:translateY(-65px) translateX(18px) scale(2)}}
-.cake-hint{font-size:12px;letter-spacing:1px}
-.final-heart{font-size:64px;animation:heartbeat 1.3s infinite}
-@keyframes heartbeat{50%{transform:scale(1.13)}}
-.nav{position:fixed;bottom:0;left:0;right:0;z-index:12;display:flex;justify-content:center;align-items:center;gap:24px;padding:18px;background:linear-gradient(transparent,#150e20 30%)}
-.arrow{width:46px;height:46px;border:1px solid #ffffff2c;background:#ffffff0c;color:white;border-radius:50%;font-size:22px;transition:.2s}
-.arrow:hover{background:#f5b4d026}
-.dots{display:flex;gap:7px;align-items:center}
-.dot{width:6px;height:6px;border:0;border-radius:50%;padding:0;background:#ffffff40}
-.dot.active{background:var(--pink);width:20px;border-radius:9px}
-.footer{font-size:11px;color:#a99aaa;margin-top:35px}
-@media(max-width:480px){#pages{padding:55px 18px 95px}.wishes{gap:9px}.wish{padding:17px 8px}.card{padding:21px 17px}.gallery{gap:9px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+:root {
+  --bg: #09090f;
+  --card: #13131d;
+  --pink: #ff9fbd;
+  --pink-light: #ffd4e1;
+  --text: #f8edf2;
+  --muted: #b8a9b2;
+  --border: rgba(255, 159, 189, .18);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  background:
+    radial-gradient(ellipse at top, #211421 0%, transparent 55%),
+    var(--bg);
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#sparkles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sparkle {
+  position: absolute;
+  color: var(--pink);
+  opacity: .45;
+  animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .12; transform: scale(.7); }
+  to { opacity: .8; transform: scale(1.2); }
+}
+
+/* PASSWORD SCREEN */
+
+#passwordScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  padding-top: max(24px, env(safe-area-inset-top));
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+  background:
+    radial-gradient(ellipse at 50% 30%, #30182b 0%, transparent 65%),
+    #09090f;
+}
+
+.password-card {
+  width: 100%;
+  max-width: 390px;
+  text-align: center;
+  padding: 35px 24px;
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  background: rgba(19, 19, 29, .85);
+  box-shadow: 0 15px 60px rgba(0,0,0,.3);
+}
+
+.password-icon {
+  font-size: 45px;
+  margin-bottom: 16px;
+}
+
+.password-card h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(30px, 8vw, 40px);
+  font-weight: 400;
+  color: var(--pink-light);
+  margin-bottom: 10px;
+}
+
+.password-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.password-card input {
+  width: 100%;
+  padding: 14px 16px;
+  background: #0c0c14;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  letter-spacing: 4px;
+  outline: none;
+  margin-bottom: 14px;
+}
+
+.password-card input:focus {
+  border-color: var(--pink);
+}
+
+.primary-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff9fbd, #f6b6d0);
+  color: #29131f;
+  font-weight: 600;
+  transition: transform .2s, filter .2s;
+}
+
+.primary-btn:active {
+  transform: scale(.97);
+}
+
+#errorMessage {
+  color: #ff9fbd;
+  font-size: 12px;
+  margin-top: 12px;
+  min-height: 18px;
+}
+
+/* MAIN WEBSITE */
+
+#mainContent {
+  position: relative;
+  z-index: 1;
+}
+
+#mainContent[inert] {
+  pointer-events: none;
+}
+
+section {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 80px 22px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--pink);
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 4px;
+  margin-bottom: 18px;
+}
+
+h1, h2, h3 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+}
+
+.section-title {
+  color: var(--pink-light);
+  font-size: clamp(31px, 7vw, 45px);
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+/* HERO */
+
+#hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: max(55px, env(safe-area-inset-top));
+  padding-bottom: 60px;
+}
+
+.hero-decor {
+  font-size: 23px;
+  letter-spacing: 8px;
+  margin-bottom: 24px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+.hero-small {
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 15px;
+}
+
+.hero-title {
+  font-size: clamp(48px, 12vw, 83px);
+  line-height: 1.08;
+  color: var(--pink-light);
+  text-shadow: 0 0 40px rgba(255,159,189,.12);
+}
+
+.hero-title em {
+  display: block;
+  font-weight: 400;
+  color: var(--pink);
+}
+
+.hero-description {
+  max-width: 450px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+  margin: 24px auto 30px;
+}
+
+.kitty-row {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin: 10px 0 30px;
+}
+
+.kitty {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.025);
+  border-radius: 18px;
+  padding: 13px 17px;
+  font-size: 35px;
+  transition: transform .25s, background .25s;
+  user-select: none;
+}
+
+.kitty:active {
+  transform: scale(1.15) rotate(-5deg);
+  background: rgba(255,159,189,.1);
+}
+
+.pink-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid rgba(255,159,189,.5);
+  color: var(--pink-light);
+  background: rgba(255,159,189,.08);
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-size: 12px;
+  letter-spacing: .5px;
+  transition: all .25s;
+}
+
+.pink-btn:active {
+  background: rgba(255,159,189,.2);
+  transform: scale(.97);
+}
+
+.scroll-hint {
+  margin-top: 35px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #8f7d88;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+/* CAKE */
+
+.cake-card {
+  position: relative;
+  max-width: 450px;
+  margin: 30px auto 0;
+  padding: 28px 20px 32px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(255,159,189,.06), rgba(19,19,29,.8));
+}
+
+.cake {
+  position: relative;
+  width: 190px;
+  height: 170px;
+  margin: 25px auto 18px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cake-plate {
+  position: absolute;
+  bottom: 7px;
+  left: 0;
+  width: 190px;
+  height: 17px;
+  border-radius: 50%;
+  background: #d6a8c0;
+  box-shadow: 0 7px 15px rgba(0,0,0,.3);
+}
+
+.cake-bottom {
+  position: absolute;
+  bottom: 24px;
+  left: 18px;
+  width: 154px;
+  height: 57px;
+  border-radius: 9px 9px 13px 13px;
+  background: linear-gradient(180deg, #f4a8c2, #b85b85);
+}
+
+.cake-middle {
+  position: absolute;
+  bottom: 76px;
+  left: 29px;
+  width: 132px;
+  height: 42px;
+  border-radius: 9px 9px 7px 7px;
+  background: linear-gradient(180deg, #ffe2e9, #f7b5cc);
+}
+
+.cake-top {
+  position: absolute;
+  bottom: 112px;
+  left: 29px;
+  width: 132px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffeaf0;
+}
+
+.cake-drip {
+  position: absolute;
+  bottom: 101px;
+  left: 43px;
+  width: 13px;
+  height: 20px;
+  background: #ffeaf0;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 31px 5px 0 #ffeaf0, 65px 0 0 #ffeaf0, 95px 4px 0 #ffeaf0;
+}
+
+.candle {
+  position: absolute;
+  bottom: 130px;
+  left: 91px;
+  width: 9px;
+  height: 31px;
+  border-radius: 3px 3px 0 0;
+  background: repeating-linear-gradient(
+    135deg, #fff0f4 0 5px, #ff8eb4 5px 10px
+  );
+}
+
+.flame {
+  position: absolute;
+  left: 88px;
+  bottom: 160px;
+  width: 15px;
+  height: 23px;
+  border-radius: 50% 50% 45% 45%;
+  background: radial-gradient(ellipse at 50% 70%, #fff7ba 0%, #ffb347 45%, #ff6c4b 75%);
+  box-shadow: 0 0 22px rgba(255,170,76,.65);
+  transform-origin: bottom center;
+  animation: flicker .65s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  from { transform: rotate(-5deg) scale(1); }
+  to { transform: rotate(5deg) scale(.9, 1.08); }
+}
+
+.flame.off {
+  display: none;
+}
+
+.smoke {
+  position: absolute;
+  left: 92px;
+  bottom: 163px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(210,210,220,.55);
+  filter: blur(3px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.smoke.animate {
+  animation: smokeRise 1.5s ease-out forwards;
+}
+
+@keyframes smokeRise {
+  0% { opacity: .65; transform: translate(0,0) scale(.6); }
+  100% { opacity: 0; transform: translate(12px,-60px) scale(3); }
+}
+
+.cake-instruction {
+  color: var(--pink);
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+.cake-message {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 14px;
+}
+
+/* LETTER */
+
+.letter-card {
+  max-width: 650px;
+  margin: 28px auto 0;
+  padding: 28px 24px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: rgba(19,19,29,.78);
+  box-shadow: 0 15px 45px rgba(0,0,0,.12);
+}
+
+.letter-top {
+  color: var(--pink);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.letter-card p {
+  color: #d6c7d0;
+  font-size: 13px;
+  line-height: 2.1;
+  margin-bottom: 16px;
+  white-space: pre-line;
+}
+
+.letter-sign {
+  color: var(--pink-light) !important;
+  font-family: 'DM Serif Display', serif;
+  font-size: 21px !important;
+  margin-top: 22px;
+}
+
+/* WISH CARDS */
+
+.wishes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.wish-card {
+  min-height: 150px;
+  padding: 23px 18px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(19,19,29,.72);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .25s, background .25s, transform .25s;
+}
+
+.wish-card:active {
+  transform: scale(.98);
+}
+
+.wish-card.active {
+  border-color: rgba(255,159,189,.7);
+  background: rgba(255,159,189,.09);
+}
+
+.wish-icon {
+  font-size: 25px;
+  margin-bottom: 13px;
+}
+
+.wish-card h3 {
+  font-size: 19px;
+  color: var(--pink-light);
+  margin-bottom: 8px;
+}
+
+.wish-card p {
+  font-size: 11px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+/* GALLERY */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.photo-frame {
+  position: relative;
+  min-height: 210px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 17px;
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, #211623, #13131d);
+  cursor: pointer;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  transition: transform .4s;
+}
+
+.photo-frame:active img {
+  transform: scale(1.04);
+}
+
+.photo-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.photo-fallback span {
+  font-size: 35px;
+}
+
+.gallery-note {
+  color: #988792;
+  font-size: 11px;
+  line-height: 1.9;
+  margin-top: 18px;
+}
+
+/* FINAL MESSAGE */
+
+.final-card {
+  max-width: 600px;
+  margin: 25px auto 0;
+  padding: 30px 24px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255,159,189,.07), rgba(19,19,29,.8));
+}
+
+.final-card p {
+  font-size: 13px;
+  line-height: 2.1;
+  color: #d8c8d2;
+}
+
+.secret-message {
+  display: none;
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  animation: fadeIn .6s ease;
+}
+
+.secret-message.show {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.secret-message p {
+  color: var(--pink-light);
+}
+
+.secret-sign {
+  margin-top: 18px;
+  color: var(--pink) !important;
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px !important;
+}
+
+/* FOOTER + UTILITIES */
+
+footer {
+  padding: 35px 20px calc(35px + env(safe-area-inset-bottom));
+  text-align: center;
+  border-top: 1px solid rgba(255,159,189,.09);
+  color: #887681;
+  font-size: 10px;
+  line-height: 2;
+  letter-spacing: .5px;
+}
+
+#progressBar {
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #ff8fb3, #ffd4e1);
+}
+
+#backToTop {
+  position: fixed;
+  z-index: 80;
+  right: 18px;
+  bottom: calc(18px + env(safe-area-inset-bottom));
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(19,19,29,.9);
+  color: var(--pink-light);
+  font-size: 19px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: .25s;
+}
+
+#backToTop.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.heart-pop {
+  position: fixed;
+  z-index: 120;
+  pointer-events: none;
+  animation: heartFloat 1.2s ease-out forwards;
+}
+
+@keyframes heartFloat {
+  0% { opacity: 0; transform: translateY(0) scale(.5); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-90px) scale(1.4); }
+}
+
+/* PHOTO LIGHTBOX */
+
+#lightbox {
+  position: fixed;
+  z-index: 200;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  background: rgba(0,0,0,.92);
+}
+
+#lightbox.open {
+  display: flex;
+}
+
+#lightbox img {
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+#closeLightbox {
+  position: absolute;
+  top: max(18px, env(safe-area-inset-top));
+  right: 20px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 32px;
+  padding: 8px;
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 65px 18px;
+  }
+
+  #hero {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .wishes-grid {
+    gap: 10px;
+  }
+
+  .wish-card {
+    padding: 18px 13px;
+    min-height: 145px;
+  }
+
+  .wish-card h3 {
+    font-size: 17px;
+  }
+
+  .wish-card p {
+    font-size: 10px;
+  }
+
+  .gallery-grid {
+    gap: 10px;
+  }
+
+  .photo-frame {
+    min-height: 160px;
+  }
+
+  .letter-card {
+    padding: 23px 19px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
 </style>
 </head>
 
 <body>
-<div id="gate">
-  <div class="gate-card">
-    <div class="gate-icon">🔐</div>
-    <div class="eyebrow">A little surprise</div>
-    <h2>Just for you</h2>
-    <p>Someone made a little corner of the world just for you. 💗</p>
-    <form id="unlockForm">
-      <input id="password" type="password" inputmode="numeric" placeholder="Enter the secret code" aria-label="Secret code" autocomplete="off">
-      <button class="btn" type="submit">Open your surprise ♡</button>
-    </form>
-    <div id="error" aria-live="polite"></div>
-    <p style="font-size:11px">A little secret, just between us ✨</p>
-  </div>
+
+<div id="progressBar"></div>
+<div id="sparkles" aria-hidden="true"></div>
+
+<!-- PASSWORD SCREEN -->
+<div id="passwordScreen">
+  <form class="password-card" id="passwordForm">
+    <div class="password-icon">🎂</div>
+    <h1>A Little Surprise</h1>
+    <p>
+      Someone made a little something for you.<br>
+      Enter the password to open it ♡
+    </p>
+
+    <input
+      id="passwordInput"
+      type="password"
+      inputmode="numeric"
+      placeholder="Enter password"
+      autocomplete="off"
+      aria-label="Website password"
+      required
+    >
+
+    <button class="primary-btn" type="submit">
+      Open Your Surprise ♡
+    </button>
+
+    <div id="errorMessage" role="status"></div>
+  </form>
 </div>
 
-<div id="site">
-  <div class="progress" id="progress"></div>
-  <header class="topbar">
-    <div class="brand">For you, with love ♡</div>
-    <div id="counter">01 / 07</div>
-  </header>
+<!-- MAIN CONTENT -->
+<main id="mainContent" inert>
 
-  <main id="pages">
-    <section class="page active" data-title="Welcome">
-      <div class="page-content">
-        <div class="eyebrow">A little world made for you</div>
-        <h1>Happy Birthday,<br><span class="pink">beautiful soul.</span></h1>
-        <p class="hero-sub">Today is all about you. So here's a little something made with care, a few smiles, and lots of good wishes. 💗</p>
-        <div class="kitties">
-          <span class="kitty">🐈</span><span class="kitty">🐈‍⬛</span><span class="kitty">🐱</span>
-        </div>
-        <button class="btn" onclick="nextPage()">Let's begin ✨</button>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-decor">♡ ✧ ♡</div>
+    <div class="hero-small">A little something for</div>
+
+    <h1 class="hero-title">
+      Happy Birthday,
+      <em>Ousa ♡</em>
+    </h1>
+
+    <p class="hero-description">
+      Ajker din-ta apnar jonno ektu special hok.
+      Apnar jonno chotto ekta surprise banalam. ♡
+    </p>
+
+    <div class="kitty-row">
+      <button class="kitty" type="button" aria-label="Tap the first kitty">🐈</button>
+      <button class="kitty" type="button" aria-label="Tap the second kitty">🐈‍⬛</button>
+    </div>
+
+    <button class="pink-btn" type="button" onclick="goTo('birthdayCake')">
+      Your little surprise <span>♡</span>
+    </button>
+
+    <div class="scroll-hint">SCROLL DOWN TO EXPLORE ↓</div>
+  </section>
+
+  <!-- CAKE -->
+  <section id="birthdayCake">
+    <div class="eyebrow">A birthday wish</div>
+    <h2 class="section-title">Make a Wish ♡</h2>
+    <p class="section-subtitle">
+      Ebar apnar jonno ekta chotto birthday cake.
+    </p>
+
+    <div class="cake-card">
+      <div class="cake" id="cake" role="button" tabindex="0"
+           aria-label="Tap the cake to blow out the candle">
+        <div class="cake-plate"></div>
+        <div class="cake-bottom"></div>
+        <div class="cake-middle"></div>
+        <div class="cake-top"></div>
+        <div class="cake-drip"></div>
+        <div class="candle"></div>
+        <div class="flame" id="flame"></div>
+        <div class="smoke" id="smoke"></div>
       </div>
-    </section>
 
-    <section class="page" data-title="Cake">
-      <div class="page-content">
-        <div class="eyebrow">Make a little wish</div>
-        <h2>A cake, just for you 🎂</h2>
-        <p>Tap the candle to blow it out. Don't forget to make a wish first! 💫</p>
-        <div class="cake-area">
-          <div class="cake" role="button" tabindex="0" aria-label="Blow out the birthday candle" onclick="blowCandle()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();blowCandle()}">
-            <div class="candle"><div class="flame" id="flame"></div><div class="smoke" id="smoke">☁️</div></div>
-            <div class="cake-top"></div><div class="cake-base"></div>
-          </div>
+      <p class="cake-instruction" id="cakeInstruction">
+        🕯️ Candle-ta touch korun to blow it out!
+      </p>
+
+      <p class="cake-message" id="cakeMessage">
+        Chokh bondho kore ekta wish korun. ✨
+      </p>
+    </div>
+  </section>
+
+  <!-- LETTER -->
+  <section id="letter">
+    <div class="eyebrow">A little letter</div>
+    <h2 class="section-title">For You ♡</h2>
+
+    <div class="letter-card">
+      <div class="letter-top">A letter written with care ✉️</div>
+
+      <p>Dear Ousa,</p>
+
+      <p>
+        Happy Birthday! 🥹💗
+
+        Ajker din-ta apnar jonno onek onek special hok.
+        Apnar jibone onek shukh, shanti ar success ashuk.
+        Apni ja ja shopno dekhen, Allah jeno shobgulo puron koren.
+      </p>
+
+      <p>
+        Apnar mukher hashi-ta jeno shobshomoy emon-i thake.
+        Jiboner protita step-e bhalo kichu opekkha koruk apnar jonno.
+        Ar joto challenge ashuk na keno, apni jeno shobkichu confidence-er
+        sathe face korte paren.
+      </p>
+
+      <p>
+        Maybe amader kotha khub beshi hoy na, but apnar jonno
+        amar shubhokamona shobshomoy thakbe. Apni bhalo thakben,
+        nijer kheyal rakhben, ar nijer shopnogulor dike egiye jaben.
+      </p>
+
+      <p>
+        I wish you the life you are dreaming of from childhood. ♡
+      </p>
+
+      <p class="letter-sign">
+        With lots of good wishes,<br>
+        Someone who wishes the best for you ♡
+      </p>
+    </div>
+  </section>
+
+  <!-- WISHES -->
+  <section id="wishes">
+    <div class="eyebrow">For your new year</div>
+    <h2 class="section-title">Five Little Wishes</h2>
+    <p class="section-subtitle">
+      Apnar jonno amar panch-ta chotto wish. Ekta ekta kore touch korte paren. ♡
+    </p>
+
+    <div class="wishes-grid">
+      <article class="wish-card" tabindex="0">
+        <div class="wish-icon">🌷</div>
+        <h3>Happiness</h3>
+        <p>Apnar protita din jeno shundor muhurto ar hashi diye bhore thake.</p>
+      </article>
+
+      <article class="wish-card" tabindex="0">
+        <div class="wish-icon">✨</div>
+        <h3>Success</h3>
+        <p>Apnar porishrom jeno shundor result niye ashe, In Shaa Allah.</p>
+      </article>
+
+      <article class="wish-card" tabindex="0">
+        <div class="wish-icon">🕊️</div>
+        <h3>Peace</h3>
+        <p>Moner shanti ar jiboner protita step-e bhalo kichu ashuk.</p>
+      </article>
+
+      <article class="wish-card" tabindex="0">
+        <div class="wish-icon">🌙</div>
+        <h3>Good Health</h3>
+        <p>Allah jeno apnake sustho rakhen ar shob bipod theke hefazot koren.</p>
+      </article>
+
+      <article class="wish-card" tabindex="0">
+        <div class="wish-icon">💗</div>
+        <h3>Dreams</h3>
+        <p>Chotobelar shopno theke shuru kore shob priyo iccha puron hok.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section id="gallery">
+    <div class="eyebrow">Little memories</div>
+    <h2 class="section-title">A Little Gallery ♡</h2>
+    <p class="section-subtitle">
+      Ei jaygay apnar pochonder kichu photo thakbe.
+    </p>
+
+    <div class="gallery-grid">
+      <div class="photo-frame" data-photo="photo1.jpg" role="button" tabindex="0"
+           aria-label="Open first photo">
+        <img src="photo1.jpg" alt="A special memory"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="photo-fallback" style="display:none">
+          <span>🌷</span>
+          <p>photo1.jpg ekhane add korun</p>
         </div>
-        <div class="cake-hint" id="cakeHint">TAP THE CANDLE TO BLOW IT OUT 🕯️</div>
-        <p id="cakeMessage" class="pink hidden">May your wishes find their way to you. 💗</p>
-        <button class="outline" onclick="blowCandle()">Blow the candle 🕯️</button>
       </div>
-    </section>
 
-    <section class="page" data-title="Letter">
-      <div class="page-content">
-        <div class="eyebrow">A little note for you</div>
-        <h2>Dear <span class="pink">Ousa</span>, 💌</h2>
-        <div class="card letter">
-          <p>Happy Birthday! ♡</p>
-          <p>On your special day, I just want to wish you a life full of happiness, peace, beautiful memories, and countless reasons to smile.</p>
-          <p>I wish you the life you have been dreaming of since childhood. May you achieve the things you work hard for, meet people who genuinely care about you, and always find strength when life gets difficult.</p>
-          <p>Please keep smiling, keep believing in yourself, and never forget to take care of yourself. You deserve good things, today and always.</p>
-          <p>May Allah bless you, protect you, and make your coming year beautiful in ways you never expected. Ameen. 🤍</p>
-          <p>Take care of yourself. And once again, happiest birthday! 🎂</p>
-          <p class="pink">With lots of good wishes, ♡</p>
+      <div class="photo-frame" data-photo="photo2.jpg" role="button" tabindex="0"
+           aria-label="Open second photo">
+        <img src="photo2.jpg" alt="Another special memory"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="photo-fallback" style="display:none">
+          <span>🦋</span>
+          <p>photo2.jpg ekhane add korun</p>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="page" data-title="Wishes">
-      <div class="page-content">
-        <div class="eyebrow">Five little wishes</div>
-        <h2>Open them one by one 🎁</h2>
-        <p>Each card has a little wish for your new year of life.</p>
-        <div class="wishes">
-          <button class="wish" onclick="toggleWish(this)"><span class="emoji">🌷</span>Happiness<small class="hidden">May your days have more laughter than worries.</small></button>
-          <button class="wish" onclick="toggleWish(this)"><span class="emoji">🌙</span>Peace<small class="hidden">May your heart always find peace and comfort.</small></button>
-          <button class="wish" onclick="toggleWish(this)"><span class="emoji">⭐</span>Success<small class="hidden">May your hard work lead you to wonderful places.</small></button>
-          <button class="wish" onclick="toggleWish(this)"><span class="emoji">🧸</span>Good people<small class="hidden">May you always have kind and genuine people around you.</small></button>
-          <button class="wish" onclick="toggleWish(this)" style="grid-column:1/-1"><span class="emoji">💗</span>Beautiful memories<small class="hidden">May this year give you stories you'll remember with a smile.</small></button>
-        </div>
+    <p class="gallery-note">
+      GitHub repository-te photo1.jpg ar photo2.jpg upload korle
+      ekhane photo dekhabe. ♡
+    </p>
+  </section>
+
+  <!-- FINAL MESSAGE -->
+  <section id="finalMessage">
+    <div class="eyebrow">Before you go</div>
+    <h2 class="section-title">One Last Thing ♡</h2>
+
+    <div class="final-card">
+      <p>
+        Ei chotto website-ta apnar birthday-te ektu hashi anar jonno.
+        Apnar din-ta onek shundor katuk, ar shamner bochor-ta
+        apnar jonno onek bhalo kichu niye ashuk.
+      </p>
+
+      <button class="pink-btn" type="button"
+              id="secretButton" onclick="revealSecret()"
+              style="margin-top:24px">
+        There's a little secret ♡
+      </button>
+
+      <div class="secret-message" id="secretMessage">
+        <p>
+          Shobshomoy bhalo thakben, nijer kheyal rakhben.
+          Apnar shopnogulo puron hok, ar apni jeno jibone
+          nijer pochonder jaygay pouchhate paren.
+          Apnar jonno mon theke onek onek dowa roilo. ♡
+        </p>
+
+        <p class="secret-sign">
+          — Tanvir ♡
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="page" data-title="Memories">
-      <div class="page-content">
-        <div class="eyebrow">Little moments, lovely memories</div>
-        <h2>A tiny memory corner 📸</h2>
-        <p>Add your favourite pictures here. Replace the sample filenames with your own photos.</p>
-        <div class="gallery">
-          <div class="photo"><img src="photo1.jpg" alt="Memory one" onerror="this.remove();this.parentElement.innerHTML='<span>🌸</span><small>Add photo1.jpg to your repository</small>'"></div>
-          <div class="photo"><img src="photo2.jpg" alt="Memory two" onerror="this.remove();this.parentElement.innerHTML='<span>🐈</span><small>Add photo2.jpg to your repository</small>'"></div>
-          <div class="photo"><img src="photo3.jpg" alt="Memory three" onerror="this.remove();this.parentElement.innerHTML='<span>🌷</span><small>Add photo3.jpg to your repository</small>'"></div>
-          <div class="photo"><img src="photo4.jpg" alt="Memory four" onerror="this.remove();this.parentElement.innerHTML='<span>✨</span><small>Add photo4.jpg to your repository</small>'"></div>
-        </div>
-        <p style="font-size:12px">You can also keep these spaces as cute placeholders. ♡</p>
-      </div>
-    </section>
+  <footer>
+    Made with care, just for Ousa ♡<br>
+    May your days always be filled with light and happiness.
+  </footer>
 
-    <section class="page" data-title="Message">
-      <div class="page-content">
-        <div class="eyebrow">One more thing</div>
-        <h2>A wish from the heart 🤍</h2>
-        <div class="card" style="max-width:600px;margin:auto">
-          <div style="font-size:42px">🕊️</div>
-          <p>I hope the coming year brings you closer to your dreams. Even on the days when things don't go as planned, I hope you remember how much potential you have and how many beautiful things life still has waiting for you.</p>
-          <p>May you always have the courage to start again, the patience to grow, and the happiness of knowing that your efforts matter.</p>
-          <p class="pink">Stay kind. Stay hopeful. Stay wonderfully yourself. ♡</p>
-        </div>
-      </div>
-    </section>
+</main>
 
-    <section class="page" data-title="Surprise">
-      <div class="page-content">
-        <div class="eyebrow">You've reached the end...</div>
-        <h2>But one last surprise awaits 💗</h2>
-        <p>There's a little secret hidden behind this button.</p>
-        <button class="btn" id="revealButton" onclick="revealSecret()">One last click ✨</button>
-        <div id="secret" class="card hidden" style="margin:25px auto;max-width:520px">
-          <div class="final-heart">💗</div>
-          <h2 class="pink">You deserve beautiful things.</h2>
-          <p>I wish you endless happiness, good health, success, and a future filled with everything your heart hopes for.</p>
-          <p>May Allah always keep you safe and happy. Ameen. 🤍</p>
-          <div class="kitties"><span>🐱</span><span>🎂</span><span>🐈</span></div>
-          <p class="pink">Happy Birthday, Ousa! ♡</p>
-        </div>
-        <div class="footer">Made with care, just for your special day ♡</div>
-        <button class="outline" onclick="goTo(0)">↺ Start again</button>
-      </div>
-    </section>
-  </main>
-
-  <nav class="nav" aria-label="Page navigation">
-    <button class="arrow" id="prev" aria-label="Previous section" onclick="prevPage()">‹</button>
-    <div class="dots" id="dots"></div>
-    <button class="arrow" id="next" aria-label="Next section" onclick="nextPage()">›</button>
-  </nav>
+<!-- PHOTO LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button id="closeLightbox" type="button" aria-label="Close photo">×</button>
+  <img id="lightboxImage" src="" alt="Expanded photo">
 </div>
 
-<script>
-const PASSWORD = "131107";
-const pages = Array.from(document.querySelectorAll(".page"));
-let current = 0;
-let candleBlown = false;
+<button id="backToTop" type="button" aria-label="Back to top">↑</button>
 
-document.getElementById("unlockForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  const value = document.getElementById("password").value;
-  if(value === PASSWORD){
-    document.getElementById("gate").classList.add("hidden");
-    document.getElementById("site").style.display = "block";
-    createDots();
-    goTo(0);
-    sprinkle();
-  }else{
-    document.getElementById("error").textContent = "Not quite! Try the correct secret code 💗";
-    document.getElementById("password").value = "";
-    document.getElementById("password").focus();
-  }
-});
+<!-- Part 2-er JavaScript ekhane paste korbe -->
 
-function createDots(){
-  const container = document.getElementById("dots");
-  container.innerHTML = "";
-  pages.forEach((page,index)=>{
-    const dot = document.createElement("button");
-    dot.className = "dot";
-    dot.setAttribute("aria-label","Go to "+page.dataset.title);
-    dot.onclick = ()=>goTo(index);
-    container.appendChild(dot);
-  });
-}
-
-function goTo(index){
-  current = Math.max(0,Math.min(index,pages.length-1));
-  pages.forEach((page,i)=>page.classList.toggle("active",i===current));
-  document.getElementById("counter").textContent =
-    String(current+1).padStart(2,"0")+" / "+String(pages.length).padStart(2,"0");
-  document.getElementById("progress").style.width =
-    ((current+1)/pages.length*100)+"%";
-  document.querySelectorAll(".dot").forEach((dot,i)=>{
-    dot.classList.toggle("active",i===current);
-  });
-  document.getElementById("prev").style.opacity = current===0?".35":"1";
-  document.getElementById("next").style.opacity = current===pages.length-1?".35":"1";
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-function nextPage(){if(current<pages.length-1)goTo(current+1)}
-function prevPage(){if(current>0)goTo(current-1)}
-
-document.addEventListener("keydown",function(e){
-  if(document.getElementById("site").style.display!=="block")return;
-  if(e.key==="ArrowRight")nextPage();
-  if(e.key==="ArrowLeft")prevPage();
-});
-
-let touchStartX = 0;
-document.addEventListener("touchstart",e=>{
-  touchStartX=e.changedTouches[0].screenX;
-},{passive:true});
-document.addEventListener("touchend",e=>{
-  if(document.getElementById("site").style.display!=="block")return;
-  const diff=e.changedTouches[0].screenX-touchStartX;
-  if(Math.abs(diff)>90){
-    if(diff<0)nextPage();
-    else prevPage();
-  }
-},{passive:true});
-
-function blowCandle(){
-  if(candleBlown)return;
-  candleBlown=true;
-  document.getElementById("flame").style.display="none";
-  const smoke=document.getElementById("smoke");
-  smoke.classList.remove("blow");
-  void smoke.offsetWidth;
-  smoke.classList.add("blow");
-  document.getElementById("cakeHint").textContent="WISH MADE ✨";
-  document.getElementById("cakeMessage").classList.remove("hidden");
-}
-
-function toggleWish(button){
-  const message=button.querySelector("small");
-  const isOpen=button.classList.toggle("open");
-  message.classList.toggle("hidden",!isOpen);
-}
-
-function revealSecret(){
-  document.getElementById("secret").classList.remove("hidden");
-  document.getElementById("revealButton").textContent="Your surprise is open 💗";
-  document.getElementById("revealButton").disabled=true;
-  document.getElementById("revealButton").style.opacity=".65";
-  sprinkle();
-}
-
-function sprinkle(){
-  const symbols=["♡","✦","✨","💗"];
-  for(let i=0;i<18;i++){
-    const el=document.createElement("span");
-    el.className="sparkle";
-    el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
-    el.style.left=Math.random()*100+"vw";
-    el.style.top="-5vh";
-    el.style.color=["#f5b4d0","#ffe5ef","#f6d9a6"][i%3];
-    el.style.fontSize=(12+Math.random()*15)+"px";
-    el.style.animationDuration=(4+Math.random()*5)+"s";
-    document.body.appendChild(el);
-    setTimeout(()=>el.remove(),9500);
-  }
-}
-</script>
 </body>
 </html>
