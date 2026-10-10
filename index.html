@@ -1050,5 +1050,26 @@ footer {
 
 <!-- Part 2-er JavaScript ekhane paste korbe -->
 
+<script>
+const passwordForm = document.getElementById("passwordForm");
+const passwordInput = document.getElementById("passwordInput");
+const passwordScreen = document.getElementById("passwordScreen");
+const mainContent = document.getElementById("mainContent");
+const errorMessage = document.getElementById("errorMessage");
+
+passwordForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  if (passwordInput.value.trim() === "131107") {
+    passwordScreen.style.display = "none";
+    mainContent.removeAttribute("inert");
+    document.body.style.overflowX = "hidden";
+  } else {
+    errorMessage.textContent = "Wrong password! Abar try korun ♡";
+    passwordInput.value = "";
+    passwordInput.focus();
+  }
+});
+</script>
 </body>
 </html>
