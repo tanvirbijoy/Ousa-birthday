@@ -3,96 +3,88 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#160f23">
-<title>A Little Surprise 💗</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#150e20">
+<title>A Little World for You 💗</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#160f23;
-  --pink:#f5b4d0;
-  --soft:#ffe5ef;
-  --muted:#cbbbd0;
-}
+:root{--bg:#150e20;--pink:#f5b4d0;--light:#ffe5ef;--muted:#cbbbd0;--card:#ffffff0c}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{
-  margin:0;min-height:100vh;min-height:100dvh;
-  background:radial-gradient(ellipse at top,#48243e 0%,transparent 48%),
-  radial-gradient(ellipse at bottom right,#302044,transparent 48%),var(--bg);
-  color:#fff5fa;font-family:"DM Sans",sans-serif;overflow-x:hidden;
-}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#48243e 0%,transparent 50%),radial-gradient(ellipse at bottom right,#302044,transparent 50%),var(--bg);color:#fff5fa;font-family:"DM Sans",sans-serif;min-height:100vh;overflow-x:hidden}
 button,input{font:inherit}
-button{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-button:focus-visible,input:focus-visible{outline:2px solid white;outline-offset:3px}
+button{cursor:pointer}
 h1,h2,h3{font-family:"Playfair Display",serif;font-weight:500}
-h1{font-size:clamp(2.5rem,9vw,5rem);line-height:1.15}
+h1{font-size:clamp(2.7rem,9vw,5rem);line-height:1.12}
 h2{font-size:clamp(2rem,7vw,3rem)}
-p{line-height:1.8;color:var(--muted)}
+p{line-height:1.85;color:var(--muted)}
 .hidden{display:none!important}
 .pink{color:var(--pink)}
-.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--pink)}
-.btn{
-  border:0;border-radius:40px;padding:14px 24px;
-  background:linear-gradient(135deg,#ffe0ec,#ef9cbe);
-  color:#38172a;font-weight:700;transition:transform .2s;
-}
-.btn:active{transform:scale(.97)}
+.eyebrow{text-transform:uppercase;letter-spacing:4px;font-size:11px;color:var(--pink)}
+button:focus-visible,input:focus-visible{outline:2px solid white;outline-offset:3px}
+.btn{border:0;border-radius:40px;padding:14px 24px;background:linear-gradient(135deg,#ffe0ec,#ef9cbe);color:#38172a;font-weight:700;transition:.2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px #f5b4d044}
 .outline{border:1px solid #ffffff30;border-radius:40px;padding:12px 20px;background:#ffffff09;color:white}
-#gate{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:24px}
-.gate-card{max-width:390px;width:100%;padding:32px 24px;text-align:center;border:1px solid #ffffff20;border-radius:26px;background:#ffffff09}
+#gate{min-height:100svh;display:grid;place-items:center;padding:24px}
+.gate-card{max-width:390px;width:100%;padding:35px 25px;text-align:center;border:1px solid #ffffff20;border-radius:28px;background:#ffffff09;backdrop-filter:blur(15px)}
 .gate-icon{font-size:42px}
 #password{display:block;width:100%;padding:14px;margin:18px 0 10px;background:#100b18;border:1px solid #ffffff25;border-radius:12px;color:white;text-align:center;letter-spacing:5px}
 #error{min-height:22px;color:#ffabc9;font-size:13px}
-#site{display:none}
-.topbar{position:fixed;z-index:10;top:0;left:0;right:0;padding:calc(12px + env(safe-area-inset-top)) 18px 12px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(#160f23ed,transparent)}
-.brand{font-family:"Playfair Display",serif;color:var(--pink);font-size:16px}
+.topbar{position:fixed;z-index:10;top:0;left:0;right:0;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(#150e20ee,transparent)}
+.brand{font-family:"Playfair Display",serif;color:var(--pink);font-size:17px}
 #counter{font-size:12px;color:var(--muted)}
 .progress{position:fixed;top:0;left:0;width:0;height:3px;background:var(--pink);z-index:15;transition:width .3s}
-#pages{padding:65px 18px calc(110px + env(safe-area-inset-bottom))}
-.page{display:none;max-width:780px;min-height:calc(100vh - 175px);min-height:calc(100dvh - 175px);margin:auto;align-items:center;justify-content:center;flex-direction:column;text-align:center;animation:appear .45s ease}
+#pages{padding:58px 18px 105px}
+.page{display:none;max-width:780px;min-height:calc(100svh - 165px);margin:auto;align-items:center;justify-content:center;flex-direction:column;text-align:center;animation:appear .6s ease}
 .page.active{display:flex}
-.page-content{width:100%;padding:15px 0}
-@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.page-content{width:100%;padding:22px 0}
+@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .hero-sub{max-width:510px;margin:0 auto 25px}
-.kitties{display:flex;gap:23px;justify-content:center;margin:28px 0;font-size:40px}
-.kitty{display:inline-block;animation:float 3s ease-in-out infinite}
+.kitties{font-size:35px;display:flex;gap:24px;justify-content:center;margin:28px 0}
+.kitty{display:inline-block;animation:float 2.8s ease-in-out infinite}
 .kitty:nth-child(2){animation-delay:.5s}
 .kitty:nth-child(3){animation-delay:1s}
-@keyframes float{50%{transform:translateY(-8px)}}
-.card{background:#ffffff0c;border:1px solid #ffffff18;border-radius:22px;padding:clamp(20px,5vw,30px)}
-.letter{max-width:620px;margin:auto;text-align:left;white-space:pre-line}
+@keyframes float{50%{transform:translateY(-9px) rotate(4deg)}}
+.sparkle{position:fixed;pointer-events:none;z-index:0;animation:fall linear forwards}
+@keyframes fall{from{transform:translateY(-10vh) rotate(0);opacity:0}15%{opacity:.8}to{transform:translateY(110vh) rotate(300deg);opacity:0}}
+.card{background:var(--card);border:1px solid #ffffff18;border-radius:22px;padding:25px;backdrop-filter:blur(8px)}
+.letter{max-width:600px;margin:auto;text-align:left;white-space:pre-line}
 .letter p{color:#f1dce9}
-.wishes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:25px}
-.wish{padding:18px 10px;border-radius:17px;background:#ffffff0a;border:1px solid #ffffff19;color:white;min-height:115px}
-.wish.open{background:#f5b4d01a;border-color:#f5b4d077}
-.wish .emoji{font-size:27px;display:block;margin-bottom:8px}
-.wish small{display:block;color:var(--muted);line-height:1.7;margin-top:10px}
-.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}
-.photo{aspect-ratio:4/5;border:1px dashed #f5b4d070;border-radius:17px;background:linear-gradient(145deg,#f5b4d018,#ffffff05);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;overflow:hidden;color:var(--muted)}
+.wishes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:28px}
+.wish{padding:22px 12px;border-radius:18px;background:#ffffff0a;border:1px solid #ffffff19;color:white;transition:.25s;min-height:120px}
+.wish:hover,.wish.open{background:#f5b4d01a;transform:translateY(-3px);border-color:#f5b4d077}
+.wish .emoji{font-size:28px;display:block;margin-bottom:9px}
+.wish small{display:block;color:var(--muted);line-height:1.6;margin-top:10px}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px}
+.photo{aspect-ratio:4/5;border:1px dashed #f5b4d070;border-radius:18px;background:linear-gradient(145deg,#f5b4d018,#ffffff05);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;overflow:hidden;color:var(--muted)}
 .photo img{width:100%;height:100%;object-fit:cover;display:block}
-.photo span{font-size:30px}
+.photo span{font-size:32px}
 .photo small{font-size:12px;padding:0 8px}
-.cake-area{margin:35px auto 25px}
-.cake{position:relative;width:180px;height:140px;margin:auto;cursor:pointer;touch-action:manipulation}
+.cake-area{margin:32px auto 25px;max-width:320px}
+.cake{position:relative;width:180px;margin:0 auto;height:140px;cursor:pointer}
 .cake-base{position:absolute;bottom:0;left:0;width:180px;height:78px;background:linear-gradient(90deg,#bd709a,#f2b1ce,#bd709a);border-radius:10px 10px 18px 18px;box-shadow:0 12px 20px #0003}
 .cake-base:before{content:"";position:absolute;top:24px;left:0;right:0;height:10px;background:#ffe0ec;border-radius:50%}
 .cake-top{position:absolute;top:25px;left:12px;width:156px;height:42px;background:#ffd7e7;border-radius:50%}
 .candle{position:absolute;z-index:2;left:84px;top:0;width:12px;height:43px;border-radius:4px;background:repeating-linear-gradient(45deg,#fff 0 5px,#e78fb7 5px 10px)}
-.flame{position:absolute;top:-24px;left:0;width:12px;height:22px;background:radial-gradient(ellipse at bottom,#fff3a3,#ffb33d 55%,#ff764d 85%);border-radius:50% 50% 45% 45%;transform-origin:bottom;animation:flicker .6s infinite alternate}
+.flame{position:absolute;top:-24px;left:0;width:12px;height:22px;background:radial-gradient(ellipse at bottom,#fff3a3 0%,#ffb33d 50%,#ff764d 80%);border-radius:50% 50% 45% 45%;transform-origin:bottom;animation:flicker .6s infinite alternate}
 @keyframes flicker{to{transform:rotate(7deg) scale(.9)}}
 .smoke{position:absolute;top:-30px;left:-5px;font-size:24px;opacity:0;pointer-events:none}
 .smoke.blow{animation:smoky 1.3s ease-out}
-@keyframes smoky{0%{opacity:.8;transform:translateY(0) scale(.5)}100%{opacity:0;transform:translateY(-60px) translateX(15px) scale(1.8)}}
-.nav{position:fixed;bottom:0;left:0;right:0;z-index:12;display:flex;justify-content:center;align-items:center;gap:22px;padding:14px 12px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(transparent,#160f23 30%)}
-.arrow{width:46px;height:46px;border:1px solid #ffffff2c;background:#ffffff0c;color:white;border-radius:50%;font-size:23px}
+@keyframes smoky{0%{opacity:.8;transform:translateY(0) scale(.5)}100%{opacity:0;transform:translateY(-65px) translateX(18px) scale(2)}}
+.cake-hint{font-size:12px;letter-spacing:1px}
+.final-heart{font-size:64px;animation:heartbeat 1.3s infinite}
+@keyframes heartbeat{50%{transform:scale(1.13)}}
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:12;display:flex;justify-content:center;align-items:center;gap:24px;padding:18px;background:linear-gradient(transparent,#150e20 30%)}
+.arrow{width:46px;height:46px;border:1px solid #ffffff2c;background:#ffffff0c;color:white;border-radius:50%;font-size:22px;transition:.2s}
+.arrow:hover{background:#f5b4d026}
 .dots{display:flex;gap:7px;align-items:center}
-.dot{width:7px;height:7px;border:0;border-radius:50%;padding:0;background:#ffffff40}
-.dot.active{background:var(--pink);width:19px;border-radius:9px}
-.footer{font-size:11px;color:#a99aaa;margin-top:28px}
-@media(max-width:380px){.wishes{gap:8px}.wish{padding:14px 7px}.kitties{gap:16px;font-size:35px}.brand{font-size:14px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.dot{width:6px;height:6px;border:0;border-radius:50%;padding:0;background:#ffffff40}
+.dot.active{background:var(--pink);width:20px;border-radius:9px}
+.footer{font-size:11px;color:#a99aaa;margin-top:35px}
+@media(max-width:480px){#pages{padding:55px 18px 95px}.wishes{gap:9px}.wish{padding:17px 8px}.card{padding:21px 17px}.gallery{gap:9px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 </head>
 
@@ -102,120 +94,133 @@ p{line-height:1.8;color:var(--muted)}
     <div class="gate-icon">🔐</div>
     <div class="eyebrow">A little surprise</div>
     <h2>Just for you</h2>
-    <p>A tiny corner of the world, made just for you. 💗</p>
+    <p>Someone made a little corner of the world just for you. 💗</p>
     <form id="unlockForm">
-      <input id="password" type="password" inputmode="numeric" placeholder="Secret code" aria-label="Secret code" autocomplete="off">
+      <input id="password" type="password" inputmode="numeric" placeholder="Enter the secret code" aria-label="Secret code" autocomplete="off">
       <button class="btn" type="submit">Open your surprise ♡</button>
     </form>
     <div id="error" aria-live="polite"></div>
+    <p style="font-size:11px">A little secret, just between us ✨</p>
   </div>
 </div>
 
 <div id="site">
   <div class="progress" id="progress"></div>
-  <header class="topbar"><div class="brand">For you, with love ♡</div><div id="counter">01 / 07</div></header>
+  <header class="topbar">
+    <div class="brand">For you, with love ♡</div>
+    <div id="counter">01 / 07</div>
+  </header>
 
   <main id="pages">
-    <section class="page active">
+    <section class="page active" data-title="Welcome">
       <div class="page-content">
         <div class="eyebrow">A little world made for you</div>
-        <h1>Happy Birthday,<br><span class="pink">Ousa ♡</span></h1>
-        <p class="hero-sub">A little surprise for your special day. Hope it brings a smile to your face. 💗</p>
-        <div class="kitties"><span class="kitty">🐈</span><span class="kitty">🐈‍⬛</span><span class="kitty">🐱</span></div>
+        <h1>Happy Birthday,<br><span class="pink">beautiful soul.</span></h1>
+        <p class="hero-sub">Today is all about you. So here's a little something made with care, a few smiles, and lots of good wishes. 💗</p>
+        <div class="kitties">
+          <span class="kitty">🐈</span><span class="kitty">🐈‍⬛</span><span class="kitty">🐱</span>
+        </div>
         <button class="btn" onclick="nextPage()">Let's begin ✨</button>
       </div>
     </section>
 
-    <section class="page">
+    <section class="page" data-title="Cake">
       <div class="page-content">
         <div class="eyebrow">Make a little wish</div>
         <h2>A cake, just for you 🎂</h2>
-        <p>Make a wish, then tap the candle. 💫</p>
+        <p>Tap the candle to blow it out. Don't forget to make a wish first! 💫</p>
         <div class="cake-area">
-          <div class="cake" role="button" tabindex="0" aria-label="Blow out the candle" onclick="blowCandle()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();blowCandle()}">
+          <div class="cake" role="button" tabindex="0" aria-label="Blow out the birthday candle" onclick="blowCandle()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();blowCandle()}">
             <div class="candle"><div class="flame" id="flame"></div><div class="smoke" id="smoke">☁️</div></div>
             <div class="cake-top"></div><div class="cake-base"></div>
           </div>
         </div>
-        <p id="cakeHint" class="pink">Tap the candle to blow it out 🕯️</p>
-        <button class="outline" onclick="blowCandle()">Blow the candle</button>
+        <div class="cake-hint" id="cakeHint">TAP THE CANDLE TO BLOW IT OUT 🕯️</div>
+        <p id="cakeMessage" class="pink hidden">May your wishes find their way to you. 💗</p>
+        <button class="outline" onclick="blowCandle()">Blow the candle 🕯️</button>
       </div>
     </section>
 
-    <section class="page">
+    <section class="page" data-title="Letter">
       <div class="page-content">
-        <div class="eyebrow">A little note</div>
+        <div class="eyebrow">A little note for you</div>
         <h2>Dear <span class="pink">Ousa</span>, 💌</h2>
         <div class="card letter">
-          <!-- TOMAR ORIGINAL BANGLISH LETTER EIKHANE BOSHAO -->
-          <p>Shuvo jonmodin! 💗</p>
-          <p>Apnar jonno onek onek shubhokamona. Allah jeno apnake shobshomoy sustho, shukhi ar nirapode rakhen. Apnar shob bhalo shopno puron hok, ar jibone onek shundor muhurto ashuk.</p>
-          <p>Nijer kheyal raikhen, hashi-khushi thakben. Apnar notun bochor-ta onek shundor hok. Ameen. 🤍</p>
-          <p class="pink">Once again, Happy Birthday! ♡</p>
+          <p>Happy Birthday! ♡</p>
+          <p>On your special day, I just want to wish you a life full of happiness, peace, beautiful memories, and countless reasons to smile.</p>
+          <p>I wish you the life you have been dreaming of since childhood. May you achieve the things you work hard for, meet people who genuinely care about you, and always find strength when life gets difficult.</p>
+          <p>Please keep smiling, keep believing in yourself, and never forget to take care of yourself. You deserve good things, today and always.</p>
+          <p>May Allah bless you, protect you, and make your coming year beautiful in ways you never expected. Ameen. 🤍</p>
+          <p>Take care of yourself. And once again, happiest birthday! 🎂</p>
+          <p class="pink">With lots of good wishes, ♡</p>
         </div>
       </div>
     </section>
 
-    <section class="page">
+    <section class="page" data-title="Wishes">
       <div class="page-content">
         <div class="eyebrow">Five little wishes</div>
         <h2>Open them one by one 🎁</h2>
-        <p>Chhoto chhoto kichu wish, shudhu apnar jonno.</p>
+        <p>Each card has a little wish for your new year of life.</p>
         <div class="wishes">
-          <button class="wish" onclick="toggleWish(this)"><span class="emoji">🌷</span>Happiness<small hidden>Apnar protita din hashi ar anonde bhore uthuk.</small></button>
-          <button class="wish" onclick="toggleWish(this)"><span class="emoji">🌙</span>Peace<small hidden>Apnar mon shobshomoy shantite thakuk.</small></button>
-          <button class="wish" onclick="toggleWish(this)"><span class="emoji">⭐</span>Success<small hidden>Apnar porishrom apnake shopner kache niye jak.</small></button>
-          <button class="wish" onclick="toggleWish(this)"><span class="emoji">🧸</span>Good people<small hidden>Apnar pashe shobshomoy bhalo manush thakuk.</small></button>
-          <button class="wish" onclick="toggleWish(this)" style="grid-column:1/-1"><span class="emoji">💗</span>Beautiful memories<small hidden>Ei bochore onek shundor smriti toiri hok.</small></button>
+          <button class="wish" onclick="toggleWish(this)"><span class="emoji">🌷</span>Happiness<small class="hidden">May your days have more laughter than worries.</small></button>
+          <button class="wish" onclick="toggleWish(this)"><span class="emoji">🌙</span>Peace<small class="hidden">May your heart always find peace and comfort.</small></button>
+          <button class="wish" onclick="toggleWish(this)"><span class="emoji">⭐</span>Success<small class="hidden">May your hard work lead you to wonderful places.</small></button>
+          <button class="wish" onclick="toggleWish(this)"><span class="emoji">🧸</span>Good people<small class="hidden">May you always have kind and genuine people around you.</small></button>
+          <button class="wish" onclick="toggleWish(this)" style="grid-column:1/-1"><span class="emoji">💗</span>Beautiful memories<small class="hidden">May this year give you stories you'll remember with a smile.</small></button>
         </div>
       </div>
     </section>
 
-    <section class="page">
+    <section class="page" data-title="Memories">
       <div class="page-content">
-        <div class="eyebrow">Little memories</div>
-        <h2>A tiny photo corner 📸</h2>
-        <p>Chaile ekhane nijer pochonder chhobi add korte parben.</p>
+        <div class="eyebrow">Little moments, lovely memories</div>
+        <h2>A tiny memory corner 📸</h2>
+        <p>Add your favourite pictures here. Replace the sample filenames with your own photos.</p>
         <div class="gallery">
-          <div class="photo"><img src="photo1.jpg" alt="Photo 1" onerror="this.remove();this.parentElement.innerHTML='<span>🌸</span><small>photo1.jpg ekhane add korun</small>'"></div>
-          <div class="photo"><img src="photo2.jpg" alt="Photo 2" onerror="this.remove();this.parentElement.innerHTML='<span>🐈</span><small>photo2.jpg ekhane add korun</small>'"></div>
-          <div class="photo"><img src="photo3.jpg" alt="Photo 3" onerror="this.remove();this.parentElement.innerHTML='<span>🌷</span><small>photo3.jpg ekhane add korun</small>'"></div>
-          <div class="photo"><img src="photo4.jpg" alt="Photo 4" onerror="this.remove();this.parentElement.innerHTML='<span>✨</span><small>photo4.jpg ekhane add korun</small>'"></div>
+          <div class="photo"><img src="photo1.jpg" alt="Memory one" onerror="this.remove();this.parentElement.innerHTML='<span>🌸</span><small>Add photo1.jpg to your repository</small>'"></div>
+          <div class="photo"><img src="photo2.jpg" alt="Memory two" onerror="this.remove();this.parentElement.innerHTML='<span>🐈</span><small>Add photo2.jpg to your repository</small>'"></div>
+          <div class="photo"><img src="photo3.jpg" alt="Memory three" onerror="this.remove();this.parentElement.innerHTML='<span>🌷</span><small>Add photo3.jpg to your repository</small>'"></div>
+          <div class="photo"><img src="photo4.jpg" alt="Memory four" onerror="this.remove();this.parentElement.innerHTML='<span>✨</span><small>Add photo4.jpg to your repository</small>'"></div>
+        </div>
+        <p style="font-size:12px">You can also keep these spaces as cute placeholders. ♡</p>
+      </div>
+    </section>
+
+    <section class="page" data-title="Message">
+      <div class="page-content">
+        <div class="eyebrow">One more thing</div>
+        <h2>A wish from the heart 🤍</h2>
+        <div class="card" style="max-width:600px;margin:auto">
+          <div style="font-size:42px">🕊️</div>
+          <p>I hope the coming year brings you closer to your dreams. Even on the days when things don't go as planned, I hope you remember how much potential you have and how many beautiful things life still has waiting for you.</p>
+          <p>May you always have the courage to start again, the patience to grow, and the happiness of knowing that your efforts matter.</p>
+          <p class="pink">Stay kind. Stay hopeful. Stay wonderfully yourself. ♡</p>
         </div>
       </div>
     </section>
 
-    <section class="page">
+    <section class="page" data-title="Surprise">
       <div class="page-content">
-        <div class="eyebrow">One more wish</div>
-        <h2>From the heart 🤍</h2>
-        <div class="card">
-          <div style="font-size:40px">🕊️</div>
-          <p>Apni jeno nijer shopnogulor dike aste aste egiye jete paren. Shob kichu ekshathe na holeo nijer upor bishash rakhben, ar nijer kheyal rakhte bhulben na.</p>
-          <p>Allah apnar poth shohoj korun, apnake bhalo rakhun. Ameen. ♡</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="page">
-      <div class="page-content">
-        <div class="eyebrow">One last little surprise</div>
-        <h2>Before you go… 💗</h2>
-        <p>Ekta chhoto wish aro baki.</p>
-        <button class="btn" id="revealButton" onclick="revealSecret()">Tap to reveal ✨</button>
-        <div id="secret" class="card hidden" style="margin-top:22px">
-          <div style="font-size:55px">💗</div>
-          <h2 class="pink">Happy Birthday, Ousa!</h2>
-          <p>Apnar jibon shundor hok, shopnogulo puron hok, ar protita din-e notun kichu bhalo pawar karon thakuk. Allah apnake shobshomoy bhalo rakhun. 🤍</p>
+        <div class="eyebrow">You've reached the end...</div>
+        <h2>But one last surprise awaits 💗</h2>
+        <p>There's a little secret hidden behind this button.</p>
+        <button class="btn" id="revealButton" onclick="revealSecret()">One last click ✨</button>
+        <div id="secret" class="card hidden" style="margin:25px auto;max-width:520px">
+          <div class="final-heart">💗</div>
+          <h2 class="pink">You deserve beautiful things.</h2>
+          <p>I wish you endless happiness, good health, success, and a future filled with everything your heart hopes for.</p>
+          <p>May Allah always keep you safe and happy. Ameen. 🤍</p>
           <div class="kitties"><span>🐱</span><span>🎂</span><span>🐈</span></div>
+          <p class="pink">Happy Birthday, Ousa! ♡</p>
         </div>
-        <p class="footer">Made with care ♡</p>
+        <div class="footer">Made with care, just for your special day ♡</div>
         <button class="outline" onclick="goTo(0)">↺ Start again</button>
       </div>
     </section>
   </main>
 
-  <nav class="nav" aria-label="Section navigation">
+  <nav class="nav" aria-label="Page navigation">
     <button class="arrow" id="prev" aria-label="Previous section" onclick="prevPage()">‹</button>
     <div class="dots" id="dots"></div>
     <button class="arrow" id="next" aria-label="Next section" onclick="nextPage()">›</button>
@@ -223,67 +228,72 @@ p{line-height:1.8;color:var(--muted)}
 </div>
 
 <script>
-const PASSWORD="131107";
-const pages=[...document.querySelectorAll(".page")];
-let current=0;
-let candleBlown=false;
+const PASSWORD = "131107";
+const pages = Array.from(document.querySelectorAll(".page"));
+let current = 0;
+let candleBlown = false;
 
-document.getElementById("unlockForm").addEventListener("submit",function(e){
+document.getElementById("unlockForm").addEventListener("submit", function(e){
   e.preventDefault();
-  if(document.getElementById("password").value===PASSWORD){
+  const value = document.getElementById("password").value;
+  if(value === PASSWORD){
     document.getElementById("gate").classList.add("hidden");
-    document.getElementById("site").style.display="block";
+    document.getElementById("site").style.display = "block";
     createDots();
     goTo(0);
+    sprinkle();
   }else{
-    document.getElementById("error").textContent="Code-ta abar check korun 💗";
-    document.getElementById("password").value="";
+    document.getElementById("error").textContent = "Not quite! Try the correct secret code 💗";
+    document.getElementById("password").value = "";
+    document.getElementById("password").focus();
   }
 });
 
 function createDots(){
-  const box=document.getElementById("dots");
-  box.innerHTML="";
-  pages.forEach((_,i)=>{
-    const b=document.createElement("button");
-    b.className="dot";
-    b.setAttribute("aria-label","Go to section "+(i+1));
-    b.onclick=()=>goTo(i);
-    box.appendChild(b);
+  const container = document.getElementById("dots");
+  container.innerHTML = "";
+  pages.forEach((page,index)=>{
+    const dot = document.createElement("button");
+    dot.className = "dot";
+    dot.setAttribute("aria-label","Go to "+page.dataset.title);
+    dot.onclick = ()=>goTo(index);
+    container.appendChild(dot);
   });
 }
 
 function goTo(index){
-  current=Math.max(0,Math.min(index,pages.length-1));
-  pages.forEach((p,i)=>p.classList.toggle("active",i===current));
-  document.getElementById("counter").textContent=
+  current = Math.max(0,Math.min(index,pages.length-1));
+  pages.forEach((page,i)=>page.classList.toggle("active",i===current));
+  document.getElementById("counter").textContent =
     String(current+1).padStart(2,"0")+" / "+String(pages.length).padStart(2,"0");
-  document.getElementById("progress").style.width=((current+1)/pages.length*100)+"%";
-  document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("active",i===current));
-  document.getElementById("prev").style.opacity=current===0?".4":"1";
-  document.getElementById("next").style.opacity=current===pages.length-1?".4":"1";
+  document.getElementById("progress").style.width =
+    ((current+1)/pages.length*100)+"%";
+  document.querySelectorAll(".dot").forEach((dot,i)=>{
+    dot.classList.toggle("active",i===current);
+  });
+  document.getElementById("prev").style.opacity = current===0?".35":"1";
+  document.getElementById("next").style.opacity = current===pages.length-1?".35":"1";
   window.scrollTo({top:0,behavior:"smooth"});
 }
 function nextPage(){if(current<pages.length-1)goTo(current+1)}
 function prevPage(){if(current>0)goTo(current-1)}
 
-document.addEventListener("keydown",e=>{
+document.addEventListener("keydown",function(e){
   if(document.getElementById("site").style.display!=="block")return;
   if(e.key==="ArrowRight")nextPage();
   if(e.key==="ArrowLeft")prevPage();
 });
 
-let touchX=0,touchY=0;
+let touchStartX = 0;
 document.addEventListener("touchstart",e=>{
-  touchX=e.changedTouches[0].clientX;
-  touchY=e.changedTouches[0].clientY;
+  touchStartX=e.changedTouches[0].screenX;
 },{passive:true});
 document.addEventListener("touchend",e=>{
   if(document.getElementById("site").style.display!=="block")return;
-  const dx=e.changedTouches[0].clientX-touchX;
-  const dy=e.changedTouches[0].clientY-touchY;
-  if(Math.abs(dx)>85&&Math.abs(dx)>Math.abs(dy)*1.3){
-    if(dx<0)nextPage();else prevPage();
+  const diff=e.changedTouches[0].screenX-touchStartX;
+  if(Math.abs(diff)>90){
+    if(diff<0)nextPage();
+    else prevPage();
   }
 },{passive:true});
 
@@ -295,17 +305,38 @@ function blowCandle(){
   smoke.classList.remove("blow");
   void smoke.offsetWidth;
   smoke.classList.add("blow");
-  document.getElementById("cakeHint").textContent="Wish made ✨";
+  document.getElementById("cakeHint").textContent="WISH MADE ✨";
+  document.getElementById("cakeMessage").classList.remove("hidden");
 }
+
 function toggleWish(button){
   const message=button.querySelector("small");
-  button.classList.toggle("open");
-  message.hidden=!message.hidden;
+  const isOpen=button.classList.toggle("open");
+  message.classList.toggle("hidden",!isOpen);
 }
+
 function revealSecret(){
   document.getElementById("secret").classList.remove("hidden");
-  document.getElementById("revealButton").textContent="Surprise revealed 💗";
+  document.getElementById("revealButton").textContent="Your surprise is open 💗";
   document.getElementById("revealButton").disabled=true;
+  document.getElementById("revealButton").style.opacity=".65";
+  sprinkle();
+}
+
+function sprinkle(){
+  const symbols=["♡","✦","✨","💗"];
+  for(let i=0;i<18;i++){
+    const el=document.createElement("span");
+    el.className="sparkle";
+    el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    el.style.left=Math.random()*100+"vw";
+    el.style.top="-5vh";
+    el.style.color=["#f5b4d0","#ffe5ef","#f6d9a6"][i%3];
+    el.style.fontSize=(12+Math.random()*15)+"px";
+    el.style.animationDuration=(4+Math.random()*5)+"s";
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),9500);
+  }
 }
 </script>
 </body>
