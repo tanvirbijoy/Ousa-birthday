@@ -2227,16 +2227,8 @@ function blowCandle(){
     /* Small scroll after interaction */
 
     setTimeout(function(){
-
-        document
-        .getElementById("letter")
-        .scrollIntoView({
-
-            behavior:"smooth"
-
-        });
-
-    },1200);
+    goTo("letter");
+},1200);
 
 }
 
