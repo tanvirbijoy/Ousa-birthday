@@ -1,1075 +1,2227 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#09090f">
-<title>Happy Birthday, Ousa ♡</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>For Ousa 🤍</title>
+
 
 <style>
-:root {
-  --bg: #09090f;
-  --card: #13131d;
-  --pink: #ff9fbd;
-  --pink-light: #ffd4e1;
-  --text: #f8edf2;
-  --muted: #b8a9b2;
-  --border: rgba(255, 159, 189, .18);
-}
+
+/* ==================================================
+   FONTS
+================================================== */
+
+@import url(
+'https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600&display=swap'
+);
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+
+/* ==================================================
+   BASIC
+================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 24px;
+html{
+    scroll-behavior:smooth;
 }
+
+body{
+
+    background:#090911;
 
-body {
-  min-height: 100vh;
-  min-height: 100svh;
-  background:
-    radial-gradient(ellipse at top, #211421 0%, transparent 55%),
-    var(--bg);
-  color: var(--text);
-  font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
+    color:#f7f4fa;
+
+    font-family:'Poppins',sans-serif;
+
+    overflow-x:hidden;
+
 }
 
-button, input {
-  font: inherit;
+body.locked{
+    overflow:hidden;
 }
+
+section{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
 
-button {
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
+    padding:80px 22px;
+
 }
+
+.container{
+
+    width:100%;
 
-.hidden {
-  display: none !important;
-}
+    max-width:850px;
 
-#sparkles {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
+    text-align:center;
+
 }
+
+.serif{
 
-.sparkle {
-  position: absolute;
-  color: var(--pink);
-  opacity: .45;
-  animation: twinkle 3s ease-in-out infinite alternate;
+    font-family:'DM Serif Display',serif;
+
 }
+
+.small{
 
-@keyframes twinkle {
-  from { opacity: .12; transform: scale(.7); }
-  to { opacity: .8; transform: scale(1.2); }
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:#9995a5;
+
 }
+
+
+/* ==================================================
+   FLOATING SPARKLES
+================================================== */
+
+.sparkle{
+
+    position:fixed;
 
-/* PASSWORD SCREEN */
+    width:4px;
 
-#passwordScreen {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  padding-top: max(24px, env(safe-area-inset-top));
-  padding-bottom: max(24px, env(safe-area-inset-bottom));
-  background:
-    radial-gradient(ellipse at 50% 30%, #30182b 0%, transparent 65%),
-    #09090f;
+    height:4px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.7);
+
+    animation:sparkleFloat 5s infinite ease-in-out;
+
+    pointer-events:none;
+
+    z-index:1;
+
+}
+
+.sparkle.s1{
+    top:18%;
+    left:12%;
 }
 
-.password-card {
-  width: 100%;
-  max-width: 390px;
-  text-align: center;
-  padding: 35px 24px;
-  border: 1px solid var(--border);
-  border-radius: 25px;
-  background: rgba(19, 19, 29, .85);
-  box-shadow: 0 15px 60px rgba(0,0,0,.3);
+.sparkle.s2{
+    top:35%;
+    right:15%;
+    animation-delay:1s;
 }
 
-.password-icon {
-  font-size: 45px;
-  margin-bottom: 16px;
+.sparkle.s3{
+    top:65%;
+    left:8%;
+    animation-delay:2s;
 }
 
-.password-card h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(30px, 8vw, 40px);
-  font-weight: 400;
-  color: var(--pink-light);
-  margin-bottom: 10px;
+.sparkle.s4{
+    top:78%;
+    right:10%;
+    animation-delay:3s;
 }
+
+@keyframes sparkleFloat{
+
+    0%,100%{
+        opacity:.15;
+        transform:translateY(0);
+    }
+
+    50%{
+        opacity:.8;
+        transform:translateY(-12px);
+    }
 
-.password-card p {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
-  margin-bottom: 24px;
 }
+
+
+/* ==================================================
+   PASSWORD
+================================================== */
+
+#passwordScreen{
+
+    position:fixed;
 
-.password-card input {
-  width: 100%;
-  padding: 14px 16px;
-  background: #0c0c14;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  color: white;
-  text-align: center;
-  letter-spacing: 4px;
-  outline: none;
-  margin-bottom: 14px;
+    inset:0;
+
+    z-index:9999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:25px;
+
+    background:
+
+    radial-gradient(
+        circle at center,
+        rgba(145,115,180,.16),
+        transparent 45%
+    ),
+
+    #08080f;
+
+    text-align:center;
+
 }
+
+.password-box{
+
+    width:100%;
 
-.password-card input:focus {
-  border-color: var(--pink);
+    max-width:480px;
+
 }
+
+.password-heart{
+
+    font-size:34px;
+
+    margin-bottom:15px;
 
-.primary-btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  border: none;
-  padding: 14px 20px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #ff9fbd, #f6b6d0);
-  color: #29131f;
-  font-weight: 600;
-  transition: transform .2s, filter .2s;
+    animation:heartFloat 3s infinite ease-in-out;
+
 }
+
+@keyframes heartFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
 
-.primary-btn:active {
-  transform: scale(.97);
+    50%{
+        transform:translateY(-7px);
+    }
+
 }
+
+.password-box h1{
+
+    font-size:clamp(38px,8vw,65px);
+
+    font-weight:400;
 
-#errorMessage {
-  color: #ff9fbd;
-  font-size: 12px;
-  margin-top: 12px;
-  min-height: 18px;
+    line-height:1.1;
+
+    margin:20px 0;
+
 }
+
+.password-box p{
+
+    color:#aaa6b5;
 
-/* MAIN WEBSITE */
+    line-height:1.8;
 
-#mainContent {
-  position: relative;
-  z-index: 1;
+    margin-bottom:30px;
+
 }
+
+#passwordInput{
+
+    width:100%;
+
+    max-width:270px;
 
-#mainContent[inert] {
-  pointer-events: none;
+    padding:15px 20px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,.16);
+
+    background:rgba(255,255,255,.05);
+
+    color:white;
+
+    outline:none;
+
+    text-align:center;
+
+    font-family:inherit;
+
+    font-size:18px;
+
+    letter-spacing:6px;
+
 }
+
+#passwordInput:focus{
 
-section {
-  width: 100%;
-  max-width: 850px;
-  margin: 0 auto;
-  padding: 80px 22px;
-  text-align: center;
+    border-color:rgba(200,170,230,.5);
+
 }
+
+.unlock-btn{
+
+    margin-top:18px;
+
+    padding:14px 30px;
 
-.eyebrow {
-  color: var(--pink);
-  text-transform: uppercase;
-  font-size: 10px;
-  letter-spacing: 4px;
-  margin-bottom: 18px;
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,.18);
+
+    background:rgba(255,255,255,.07);
+
+    color:white;
+
+    font-family:inherit;
+
+    cursor:pointer;
+
+    transition:.3s;
+
 }
 
-h1, h2, h3 {
-  font-family: 'DM Serif Display', serif;
-  font-weight: 400;
+.unlock-btn:hover{
+
+    background:rgba(255,255,255,.14);
+
+    transform:translateY(-2px);
+
 }
+
+#wrongPassword{
+
+    min-height:22px;
+
+    margin-top:15px;
+
+    color:#aaa6b5;
+
+    font-size:13px;
 
-.section-title {
-  color: var(--pink-light);
-  font-size: clamp(31px, 7vw, 45px);
-  line-height: 1.2;
-  margin-bottom: 18px;
 }
 
-.section-subtitle {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.9;
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+
+    radial-gradient(
+        circle at 50% 35%,
+        rgba(155,125,190,.16),
+        transparent 38%
+    ),
+
+    #090911;
+
 }
 
-/* HERO */
+.hero-content{
 
-#hero {
-  min-height: 100vh;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: max(55px, env(safe-area-inset-top));
-  padding-bottom: 60px;
+    position:relative;
+
+    z-index:3;
+
 }
+
+.hero h1{
+
+    font-size:clamp(70px,15vw,125px);
 
-.hero-decor {
-  font-size: 23px;
-  letter-spacing: 8px;
-  margin-bottom: 24px;
-  animation: float 3s ease-in-out infinite;
+    font-weight:400;
+
+    line-height:1;
+
+    margin:25px 0;
+
 }
+
+.hero-sub{
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-9px); }
+    max-width:560px;
+
+    margin:auto;
+
+    color:#c4c0cb;
+
+    font-size:15px;
+
+    line-height:1.9;
+
 }
+
+.start-btn{
+
+    margin-top:40px;
+
+    padding:14px 28px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,.18);
+
+    background:rgba(255,255,255,.05);
+
+    color:white;
+
+    font-family:inherit;
+
+    cursor:pointer;
+
+    transition:.3s;
 
-.hero-small {
-  font-size: 11px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--pink);
-  margin-bottom: 15px;
 }
 
-.hero-title {
-  font-size: clamp(48px, 12vw, 83px);
-  line-height: 1.08;
-  color: var(--pink-light);
-  text-shadow: 0 0 40px rgba(255,159,189,.12);
+.start-btn:hover{
+
+    background:rgba(255,255,255,.12);
+
+    transform:translateY(-3px);
+
 }
+
+
+/* ==================================================
+   KITTIES
+================================================== */
+
+.kitty{
+
+    position:absolute;
 
-.hero-title em {
-  display: block;
-  font-weight: 400;
-  color: var(--pink);
+    font-size:70px;
+
+    z-index:2;
+
+    user-select:none;
+
+    animation:kittyFloat 4s ease-in-out infinite;
+
 }
 
-.hero-description {
-  max-width: 450px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 2;
-  margin: 24px auto 30px;
+.kitty-left{
+
+    left:7%;
+
+    bottom:13%;
+
 }
+
+.kitty-right{
 
-.kitty-row {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  margin: 10px 0 30px;
+    right:7%;
+
+    top:17%;
+
+    animation-delay:1.5s;
+
 }
 
-.kitty {
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,.025);
-  border-radius: 18px;
-  padding: 13px 17px;
-  font-size: 35px;
-  transition: transform .25s, background .25s;
-  user-select: none;
+@keyframes kittyFloat{
+
+    0%,100%{
+        transform:translateY(0) rotate(-2deg);
+    }
+
+    50%{
+        transform:translateY(-10px) rotate(2deg);
+    }
+
 }
+
 
-.kitty:active {
-  transform: scale(1.15) rotate(-5deg);
-  background: rgba(255,159,189,.1);
+/* ==================================================
+   CAKE AREA
+================================================== */
+
+.cake-section{
+
+    position:relative;
+
+    background:
+
+    radial-gradient(
+        circle at center,
+        rgba(130,105,165,.12),
+        transparent 40%
+    ),
+
+    #0b0b13;
+
 }
+
+.cake-content{
+
+    position:relative;
 
-.pink-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border: 1px solid rgba(255,159,189,.5);
-  color: var(--pink-light);
-  background: rgba(255,159,189,.08);
-  padding: 14px 24px;
-  border-radius: 50px;
-  font-size: 12px;
-  letter-spacing: .5px;
-  transition: all .25s;
+    z-index:3;
+
 }
+
+.cake-title{
+
+    font-size:clamp(38px,7vw,58px);
+
+    font-weight:400;
 
-.pink-btn:active {
-  background: rgba(255,159,189,.2);
-  transform: scale(.97);
-}
-
-.scroll-hint {
-  margin-top: 35px;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: #8f7d88;
-  animation: float 2.5s ease-in-out infinite;
-}
-
-/* CAKE */
-
-.cake-card {
-  position: relative;
-  max-width: 450px;
-  margin: 30px auto 0;
-  padding: 28px 20px 32px;
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  background: linear-gradient(145deg, rgba(255,159,189,.06), rgba(19,19,29,.8));
+    margin:20px 0 10px;
+
 }
+
+.cake-sub{
+
+    color:#aaa6b5;
+
+    font-size:14px;
 
-.cake {
-  position: relative;
-  width: 190px;
-  height: 170px;
-  margin: 25px auto 18px;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.cake-plate {
-  position: absolute;
-  bottom: 7px;
-  left: 0;
-  width: 190px;
-  height: 17px;
-  border-radius: 50%;
-  background: #d6a8c0;
-  box-shadow: 0 7px 15px rgba(0,0,0,.3);
+    margin-bottom:35px;
+
 }
+
+
+/* Cake */
+
+.cake{
+
+    position:relative;
+
+    width:230px;
+
+    height:170px;
+
+    margin:55px auto 25px;
 
-.cake-bottom {
-  position: absolute;
-  bottom: 24px;
-  left: 18px;
-  width: 154px;
-  height: 57px;
-  border-radius: 9px 9px 13px 13px;
-  background: linear-gradient(180deg, #f4a8c2, #b85b85);
 }
 
-.cake-middle {
-  position: absolute;
-  bottom: 76px;
-  left: 29px;
-  width: 132px;
-  height: 42px;
-  border-radius: 9px 9px 7px 7px;
-  background: linear-gradient(180deg, #ffe2e9, #f7b5cc);
+
+/* Plate */
+
+.plate{
+
+    position:absolute;
+
+    width:280px;
+
+    height:25px;
+
+    bottom:0;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:#24202c;
+
+    border:1px solid rgba(255,255,255,.12);
+
 }
+
+
+/* Cake body */
+
+.cake-body{
 
-.cake-top {
-  position: absolute;
-  bottom: 112px;
-  left: 29px;
-  width: 132px;
-  height: 20px;
-  border-radius: 50%;
-  background: #ffeaf0;
+    position:absolute;
+
+    width:210px;
+
+    height:100px;
+
+    left:50%;
+
+    bottom:20px;
+
+    transform:translateX(-50%);
+
+    border-radius:18px 18px 25px 25px;
+
+    background:linear-gradient(
+        to bottom,
+        #c7a5bd,
+        #9c7898
+    );
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.35);
+
 }
+
+
+/* Cake top */
+
+.cake-top{
+
+    position:absolute;
+
+    width:210px;
 
-.cake-drip {
-  position: absolute;
-  bottom: 101px;
-  left: 43px;
-  width: 13px;
-  height: 20px;
-  background: #ffeaf0;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 31px 5px 0 #ffeaf0, 65px 0 0 #ffeaf0, 95px 4px 0 #ffeaf0;
+    height:55px;
+
+    left:50%;
+
+    bottom:100px;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:#d8bfd1;
+
 }
+
+
+/* Cream */
+
+.cream{
+
+    position:absolute;
+
+    width:210px;
+
+    height:30px;
+
+    left:50%;
+
+    bottom:78px;
+
+    transform:translateX(-50%);
 
-.candle {
-  position: absolute;
-  bottom: 130px;
-  left: 91px;
-  width: 9px;
-  height: 31px;
-  border-radius: 3px 3px 0 0;
-  background: repeating-linear-gradient(
-    135deg, #fff0f4 0 5px, #ff8eb4 5px 10px
-  );
+    background:#eee3ec;
+
+    border-radius:50%;
+
 }
+
+
+/* Candle */
+
+.candle{
+
+    position:absolute;
+
+    width:17px;
+
+    height:58px;
+
+    left:50%;
+
+    bottom:130px;
+
+    transform:translateX(-50%);
+
+    border-radius:7px;
+
+    background:
+
+    repeating-linear-gradient(
+        135deg,
+        #e9b7d7 0px,
+        #e9b7d7 8px,
+        #b983b4 8px,
+        #b983b4 14px
+    );
+
+    cursor:pointer;
+
+    z-index:5;
 
-.flame {
-  position: absolute;
-  left: 88px;
-  bottom: 160px;
-  width: 15px;
-  height: 23px;
-  border-radius: 50% 50% 45% 45%;
-  background: radial-gradient(ellipse at 50% 70%, #fff7ba 0%, #ffb347 45%, #ff6c4b 75%);
-  box-shadow: 0 0 22px rgba(255,170,76,.65);
-  transform-origin: bottom center;
-  animation: flicker .65s ease-in-out infinite alternate;
 }
 
-@keyframes flicker {
-  from { transform: rotate(-5deg) scale(1); }
-  to { transform: rotate(5deg) scale(.9, 1.08); }
+
+/* Flame */
+
+.flame{
+
+    position:absolute;
+
+    width:20px;
+
+    height:30px;
+
+    left:50%;
+
+    top:-29px;
+
+    transform:translateX(-50%);
+
+    border-radius:50% 50% 50% 50%;
+
+    background:#ffd98a;
+
+    box-shadow:
+
+    0 0 12px #ffc96b,
+
+    0 0 30px rgba(255,195,100,.5);
+
+    animation:flame 1s infinite ease-in-out;
+
+    cursor:pointer;
+
 }
+
+@keyframes flame{
+
+    0%,100%{
+        transform:translateX(-50%) scale(1);
+    }
 
-.flame.off {
-  display: none;
+    50%{
+        transform:translateX(-50%) scale(.82);
+    }
+
 }
+
+
+/* Smoke */
+
+.smoke{
 
-.smoke {
-  position: absolute;
-  left: 92px;
-  bottom: 163px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(210,210,220,.55);
-  filter: blur(3px);
-  opacity: 0;
-  pointer-events: none;
+    position:absolute;
+
+    left:50%;
+
+    top:-38px;
+
+    width:12px;
+
+    height:12px;
+
+    opacity:0;
+
+    pointer-events:none;
+
 }
+
+.smoke.show{
 
-.smoke.animate {
-  animation: smokeRise 1.5s ease-out forwards;
+    animation:smokeRise 2.2s ease-out forwards;
+
 }
+
+.smoke::before,
+.smoke::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:15px;
+
+    height:30px;
+
+    border-radius:50%;
 
-@keyframes smokeRise {
-  0% { opacity: .65; transform: translate(0,0) scale(.6); }
-  100% { opacity: 0; transform: translate(12px,-60px) scale(3); }
+    border-left:3px solid rgba(210,210,220,.35);
+
+    transform:rotate(25deg);
+
 }
+
+.smoke::before{
+
+    left:-5px;
 
-.cake-instruction {
-  color: var(--pink);
-  font-size: 12px;
-  margin-top: 12px;
+    top:0;
+
 }
+
+.smoke::after{
+
+    left:8px;
+
+    top:12px;
 
-.cake-message {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.8;
-  margin-top: 14px;
+    transform:rotate(-20deg);
+
 }
+
+@keyframes smokeRise{
+
+    0%{
+
+        opacity:0;
+
+        transform:translate(-50%,0) scale(.5);
+
+    }
+
+    25%{
+
+        opacity:1;
 
-/* LETTER */
+    }
 
-.letter-card {
-  max-width: 650px;
-  margin: 28px auto 0;
-  padding: 28px 24px;
-  text-align: left;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: rgba(19,19,29,.78);
-  box-shadow: 0 15px 45px rgba(0,0,0,.12);
+    100%{
+
+        opacity:0;
+
+        transform:translate(-50%,-65px) scale(1.5);
+
+    }
+
 }
+
+.candle-message{
+
+    color:#8f8a99;
+
+    font-size:12px;
+
+    letter-spacing:1px;
 
-.letter-top {
-  color: var(--pink);
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 20px;
 }
 
-.letter-card p {
-  color: #d6c7d0;
-  font-size: 13px;
-  line-height: 2.1;
-  margin-bottom: 16px;
-  white-space: pre-line;
+
+/* ==================================================
+   LETTER
+================================================== */
+
+.letter-section{
+
+    background:
+
+    linear-gradient(
+        180deg,
+        #0b0b13,
+        #11111b
+    );
+
 }
+
+.letter{
+
+    max-width:700px;
 
-.letter-sign {
-  color: var(--pink-light) !important;
-  font-family: 'DM Serif Display', serif;
-  font-size: 21px !important;
-  margin-top: 22px;
 }
 
-/* WISH CARDS */
+.letter h2{
 
-.wishes-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 30px;
+    font-size:clamp(38px,7vw,58px);
+
+    font-weight:400;
+
+    margin:25px 0 35px;
+
 }
+
+.letter p{
+
+    color:#d0ccd7;
+
+    font-size:15px;
+
+    line-height:2.05;
+
+    margin-bottom:25px;
 
-.wish-card {
-  min-height: 150px;
-  padding: 23px 18px;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: rgba(19,19,29,.72);
-  text-align: left;
-  cursor: pointer;
-  transition: border-color .25s, background .25s, transform .25s;
 }
 
-.wish-card:active {
-  transform: scale(.98);
+.highlight{
+
+    color:white;
+
+    font-weight:500;
+
 }
+
+.divider{
+
+    width:45px;
+
+    height:1px;
+
+    background:#777280;
 
-.wish-card.active {
-  border-color: rgba(255,159,189,.7);
-  background: rgba(255,159,189,.09);
+    margin:45px auto;
+
 }
+
+
+/* ==================================================
+   WISHES
+================================================== */
+
+.wishes{
 
-.wish-icon {
-  font-size: 25px;
-  margin-bottom: 13px;
+    background:#101019;
+
 }
+
+.wishes h2{
+
+    font-size:clamp(38px,7vw,55px);
+
+    font-weight:400;
 
-.wish-card h3 {
-  font-size: 19px;
-  color: var(--pink-light);
-  margin-bottom: 8px;
+    margin:20px 0 45px;
+
 }
+
+.wish-grid{
+
+    display:grid;
 
-.wish-card p {
-  font-size: 11px;
-  line-height: 1.9;
-  color: var(--muted);
+    grid-template-columns:repeat(2,1fr);
+
+    gap:17px;
+
+    text-align:left;
+
 }
+
+.wish{
 
-/* GALLERY */
+    padding:28px;
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 30px;
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.025);
+
+    transition:.3s;
+
 }
 
-.photo-frame {
-  position: relative;
-  min-height: 210px;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  border-radius: 17px;
-  border: 1px solid var(--border);
-  background: linear-gradient(145deg, #211623, #13131d);
-  cursor: pointer;
+.wish:hover{
+
+    transform:translateY(-5px);
+
+    border-color:rgba(255,255,255,.16);
+
 }
+
+.wish:last-child{
 
-.photo-frame img {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
-  object-fit: cover;
-  transition: transform .4s;
+    grid-column:1/-1;
+
 }
+
+.number{
+
+    font-size:10px;
+
+    color:#777381;
 
-.photo-frame:active img {
-  transform: scale(1.04);
+    letter-spacing:3px;
+
 }
+
+.wish h3{
+
+    margin:16px 0 10px;
+
+    font-size:18px;
 
-.photo-fallback {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 20px;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.8;
+    font-weight:500;
+
 }
+
+.wish p{
+
+    color:#aaa6b4;
+
+    font-size:13px;
 
-.photo-fallback span {
-  font-size: 35px;
+    line-height:1.8;
+
 }
+
+
+/* ==================================================
+   PHOTOS
+================================================== */
+
+.photos{
 
-.gallery-note {
-  color: #988792;
-  font-size: 11px;
-  line-height: 1.9;
-  margin-top: 18px;
+    background:#0b0b13;
+
 }
+
+.photo-grid{
+
+    display:grid;
 
-/* FINAL MESSAGE */
+    grid-template-columns:repeat(2,1fr);
 
-.final-card {
-  max-width: 600px;
-  margin: 25px auto 0;
-  padding: 30px 24px;
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  background: linear-gradient(145deg, rgba(255,159,189,.07), rgba(19,19,29,.8));
+    gap:18px;
+
+    margin-top:40px;
+
 }
+
+.photo-card{
+
+    overflow:hidden;
 
-.final-card p {
-  font-size: 13px;
-  line-height: 2.1;
-  color: #d8c8d2;
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.025);
+
 }
+
+.photo-card img{
+
+    width:100%;
+
+    height:300px;
+
+    object-fit:cover;
+
+    display:block;
 
-.secret-message {
-  display: none;
-  margin-top: 24px;
-  padding-top: 22px;
-  border-top: 1px solid var(--border);
-  animation: fadeIn .6s ease;
 }
 
-.secret-message.show {
-  display: block;
+.photo-card p{
+
+    padding:17px;
+
+    color:#aaa6b4;
+
+    font-size:13px;
+
+    line-height:1.7;
+
 }
+
+
+/* ==================================================
+   PERSONAL
+================================================== */
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.personal{
+
+    background:
+
+    radial-gradient(
+        circle at center,
+        rgba(135,110,165,.11),
+        transparent 45%
+    ),
+
+    #0d0d16;
+
 }
 
-.secret-message p {
-  color: var(--pink-light);
+.personal-box{
+
+    max-width:680px;
+
 }
+
+.personal h2{
+
+    font-size:clamp(38px,7vw,58px);
 
-.secret-sign {
-  margin-top: 18px;
-  color: var(--pink) !important;
-  font-family: 'DM Serif Display', serif;
-  font-size: 22px !important;
+    font-weight:400;
+
+    margin:20px 0 30px;
+
 }
+
+.personal p{
 
-/* FOOTER + UTILITIES */
+    color:#c5c1cc;
 
-footer {
-  padding: 35px 20px calc(35px + env(safe-area-inset-bottom));
-  text-align: center;
-  border-top: 1px solid rgba(255,159,189,.09);
-  color: #887681;
-  font-size: 10px;
-  line-height: 2;
-  letter-spacing: .5px;
+    line-height:2;
+
+    font-size:15px;
+
+    margin-bottom:22px;
+
 }
+
 
-#progressBar {
-  position: fixed;
-  z-index: 90;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 3px;
-  background: linear-gradient(90deg, #ff8fb3, #ffd4e1);
+/* ==================================================
+   FINAL
+================================================== */
+
+.final{
+
+    min-height:100vh;
+
+    background:#08080e;
+
 }
+
+.final h2{
+
+    font-size:clamp(42px,8vw,72px);
+
+    font-weight:400;
+
+    line-height:1.15;
 
-#backToTop {
-  position: fixed;
-  z-index: 80;
-  right: 18px;
-  bottom: calc(18px + env(safe-area-inset-bottom));
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: rgba(19,19,29,.9);
-  color: var(--pink-light);
-  font-size: 19px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: .25s;
+    margin:25px 0;
+
 }
+
+.reveal-btn{
+
+    margin-top:25px;
+
+    padding:14px 28px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    background:transparent;
+
+    color:white;
 
-#backToTop.visible {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
+    font-family:inherit;
+
+    cursor:pointer;
+
 }
+
+.reveal-btn:hover{
+
+    background:white;
 
-.heart-pop {
-  position: fixed;
-  z-index: 120;
-  pointer-events: none;
-  animation: heartFloat 1.2s ease-out forwards;
+    color:#111;
+
 }
+
+.secret{
+
+    display:none;
+
+    max-width:650px;
 
-@keyframes heartFloat {
-  0% { opacity: 0; transform: translateY(0) scale(.5); }
-  20% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-90px) scale(1.4); }
+    margin:35px auto 0;
+
+    animation:appear 1.2s ease forwards;
+
 }
+
+@keyframes appear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
 
-/* PHOTO LIGHTBOX */
+    to{
 
-#lightbox {
-  position: fixed;
-  z-index: 200;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 22px;
-  background: rgba(0,0,0,.92);
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
 }
+
+.secret p{
+
+    color:#c8c4ce;
+
+    line-height:2.05;
+
+    font-size:15px;
+
+    margin-bottom:22px;
 
-#lightbox.open {
-  display: flex;
 }
 
-#lightbox img {
-  max-width: 100%;
-  max-height: 82vh;
-  object-fit: contain;
-  border-radius: 10px;
+.signature{
+
+    margin-top:35px;
+
+    color:#8f8b98;
+
+    font-size:13px;
+
 }
+
+.heart{
+
+    margin-top:25px;
+
+    font-size:28px;
 
-#closeLightbox {
-  position: absolute;
-  top: max(18px, env(safe-area-inset-top));
-  right: 20px;
-  border: none;
-  background: transparent;
-  color: white;
-  font-size: 32px;
-  padding: 8px;
 }
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media(max-width:650px){
+
+    section{
+
+        padding:65px 20px;
+
+    }
+
+    .kitty{
+
+        font-size:48px;
 
-@media (max-width: 480px) {
-  section {
-    padding: 65px 18px;
-  }
+    }
 
-  #hero {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
+    .kitty-left{
 
-  .wishes-grid {
-    gap: 10px;
-  }
+        left:4%;
 
-  .wish-card {
-    padding: 18px 13px;
-    min-height: 145px;
-  }
+        bottom:8%;
 
-  .wish-card h3 {
-    font-size: 17px;
-  }
+    }
 
-  .wish-card p {
-    font-size: 10px;
-  }
+    .kitty-right{
 
-  .gallery-grid {
-    gap: 10px;
-  }
+        right:4%;
 
-  .photo-frame {
-    min-height: 160px;
-  }
+        top:12%;
 
-  .letter-card {
-    padding: 23px 19px;
-  }
+    }
+
+    .wish-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .wish:last-child{
+
+        grid-column:auto;
+
+    }
+
+    .photo-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .photo-card img{
+
+        height:280px;
+
+    }
+
+    .cake{
+
+        transform:scale(.9);
+
+    }
+
+}
+
+/* ==================================================
+   SECTION NAVIGATION ARROWS
+================================================== */
+
+.section-nav {
+    position: fixed;
+    z-index: 500;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 9px 14px;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 50px;
+    background: rgba(13,13,22,.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+body.locked .section-nav {
+    display: none;
+}
+
+.section-nav button {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.06);
+    color: #fff;
+    font-size: 23px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition: background .25s, transform .25s;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
-  }
+.section-nav button:hover {
+    background: rgba(255,255,255,.16);
+    transform: scale(1.06);
 }
+
+.section-nav button:disabled {
+    opacity: .3;
+    cursor: default;
+    transform: none;
+}
+
+.section-count {
+    min-width: 48px;
+    color: #c4c0cb;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+@media (max-width: 650px) {
+    .section-nav {
+        bottom: 12px;
+        gap: 10px;
+        padding: 7px 11px;
+    }
+
+    .section-nav button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
 </style>
+
 </head>
 
-<body>
 
-<div id="progressBar"></div>
-<div id="sparkles" aria-hidden="true"></div>
+<body class="locked">
 
-<!-- PASSWORD SCREEN -->
+
+<!-- ==================================================
+     SUBTLE SPARKLES
+================================================== -->
+
+<div class="sparkle s1"></div>
+<div class="sparkle s2"></div>
+<div class="sparkle s3"></div>
+<div class="sparkle s4"></div>
+
+
+
+<!-- ==================================================
+     PASSWORD SCREEN
+================================================== -->
+
 <div id="passwordScreen">
-  <form class="password-card" id="passwordForm">
-    <div class="password-icon">🎂</div>
-    <h1>A Little Surprise</h1>
-    <p>
-      Someone made a little something for you.<br>
-      Enter the password to open it ♡
-    </p>
 
-    <input
-      id="passwordInput"
-      type="password"
-      inputmode="numeric"
-      placeholder="Enter password"
-      autocomplete="off"
-      aria-label="Website password"
-      required
-    >
+    <div class="password-box">
 
-    <button class="primary-btn" type="submit">
-      Open Your Surprise ♡
-    </button>
-
-    <div id="errorMessage" role="status"></div>
-  </form>
-</div>
-
-<!-- MAIN CONTENT -->
-<main id="mainContent" inert>
-
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-decor">♡ ✧ ♡</div>
-    <div class="hero-small">A little something for</div>
-
-    <h1 class="hero-title">
-      Happy Birthday,
-      <em>Ousa ♡</em>
-    </h1>
-
-    <p class="hero-description">
-      Ajker din-ta apnar jonno ektu special hok.
-      Apnar jonno chotto ekta surprise banalam. ♡
-    </p>
-
-    <div class="kitty-row">
-      <button class="kitty" type="button" aria-label="Tap the first kitty">🐈</button>
-      <button class="kitty" type="button" aria-label="Tap the second kitty">🐈‍⬛</button>
-    </div>
-
-    <button class="pink-btn" type="button" onclick="goTo('birthdayCake')">
-      Your little surprise <span>♡</span>
-    </button>
-
-    <div class="scroll-hint">SCROLL DOWN TO EXPLORE ↓</div>
-  </section>
-
-  <!-- CAKE -->
-  <section id="birthdayCake">
-    <div class="eyebrow">A birthday wish</div>
-    <h2 class="section-title">Make a Wish ♡</h2>
-    <p class="section-subtitle">
-      Ebar apnar jonno ekta chotto birthday cake.
-    </p>
-
-    <div class="cake-card">
-      <div class="cake" id="cake" role="button" tabindex="0"
-           aria-label="Tap the cake to blow out the candle">
-        <div class="cake-plate"></div>
-        <div class="cake-bottom"></div>
-        <div class="cake-middle"></div>
-        <div class="cake-top"></div>
-        <div class="cake-drip"></div>
-        <div class="candle"></div>
-        <div class="flame" id="flame"></div>
-        <div class="smoke" id="smoke"></div>
-      </div>
-
-      <p class="cake-instruction" id="cakeInstruction">
-        🕯️ Candle-ta touch korun to blow it out!
-      </p>
-
-      <p class="cake-message" id="cakeMessage">
-        Chokh bondho kore ekta wish korun. ✨
-      </p>
-    </div>
-  </section>
-
-  <!-- LETTER -->
-  <section id="letter">
-    <div class="eyebrow">A little letter</div>
-    <h2 class="section-title">For You ♡</h2>
-
-    <div class="letter-card">
-      <div class="letter-top">A letter written with care ✉️</div>
-
-      <p>Dear Ousa,</p>
-
-      <p>
-        Happy Birthday! 🥹💗
-
-        Ajker din-ta apnar jonno onek onek special hok.
-        Apnar jibone onek shukh, shanti ar success ashuk.
-        Apni ja ja shopno dekhen, Allah jeno shobgulo puron koren.
-      </p>
-
-      <p>
-        Apnar mukher hashi-ta jeno shobshomoy emon-i thake.
-        Jiboner protita step-e bhalo kichu opekkha koruk apnar jonno.
-        Ar joto challenge ashuk na keno, apni jeno shobkichu confidence-er
-        sathe face korte paren.
-      </p>
-
-      <p>
-        Maybe amader kotha khub beshi hoy na, but apnar jonno
-        amar shubhokamona shobshomoy thakbe. Apni bhalo thakben,
-        nijer kheyal rakhben, ar nijer shopnogulor dike egiye jaben.
-      </p>
-
-      <p>
-        I wish you the life you are dreaming of from childhood. ♡
-      </p>
-
-      <p class="letter-sign">
-        With lots of good wishes,<br>
-        Someone who wishes the best for you ♡
-      </p>
-    </div>
-  </section>
-
-  <!-- WISHES -->
-  <section id="wishes">
-    <div class="eyebrow">For your new year</div>
-    <h2 class="section-title">Five Little Wishes</h2>
-    <p class="section-subtitle">
-      Apnar jonno amar panch-ta chotto wish. Ekta ekta kore touch korte paren. ♡
-    </p>
-
-    <div class="wishes-grid">
-      <article class="wish-card" tabindex="0">
-        <div class="wish-icon">🌷</div>
-        <h3>Happiness</h3>
-        <p>Apnar protita din jeno shundor muhurto ar hashi diye bhore thake.</p>
-      </article>
-
-      <article class="wish-card" tabindex="0">
-        <div class="wish-icon">✨</div>
-        <h3>Success</h3>
-        <p>Apnar porishrom jeno shundor result niye ashe, In Shaa Allah.</p>
-      </article>
-
-      <article class="wish-card" tabindex="0">
-        <div class="wish-icon">🕊️</div>
-        <h3>Peace</h3>
-        <p>Moner shanti ar jiboner protita step-e bhalo kichu ashuk.</p>
-      </article>
-
-      <article class="wish-card" tabindex="0">
-        <div class="wish-icon">🌙</div>
-        <h3>Good Health</h3>
-        <p>Allah jeno apnake sustho rakhen ar shob bipod theke hefazot koren.</p>
-      </article>
-
-      <article class="wish-card" tabindex="0">
-        <div class="wish-icon">💗</div>
-        <h3>Dreams</h3>
-        <p>Chotobelar shopno theke shuru kore shob priyo iccha puron hok.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- PHOTO GALLERY -->
-  <section id="gallery">
-    <div class="eyebrow">Little memories</div>
-    <h2 class="section-title">A Little Gallery ♡</h2>
-    <p class="section-subtitle">
-      Ei jaygay apnar pochonder kichu photo thakbe.
-    </p>
-
-    <div class="gallery-grid">
-      <div class="photo-frame" data-photo="photo1.jpg" role="button" tabindex="0"
-           aria-label="Open first photo">
-        <img src="photo1.jpg" alt="A special memory"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="photo-fallback" style="display:none">
-          <span>🌷</span>
-          <p>photo1.jpg ekhane add korun</p>
+        <div class="password-heart">
+            ♡
         </div>
-      </div>
 
-      <div class="photo-frame" data-photo="photo2.jpg" role="button" tabindex="0"
-           aria-label="Open second photo">
-        <img src="photo2.jpg" alt="Another special memory"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="photo-fallback" style="display:none">
-          <span>🦋</span>
-          <p>photo2.jpg ekhane add korun</p>
+        <div class="small">
+            A little secret
         </div>
-      </div>
-    </div>
 
-    <p class="gallery-note">
-      GitHub repository-te photo1.jpg ar photo2.jpg upload korle
-      ekhane photo dekhabe. ♡
-    </p>
-  </section>
+        <h1 class="serif">
+            This is only for you.
+        </h1>
 
-  <!-- FINAL MESSAGE -->
-  <section id="finalMessage">
-    <div class="eyebrow">Before you go</div>
-    <h2 class="section-title">One Last Thing ♡</h2>
-
-    <div class="final-card">
-      <p>
-        Ei chotto website-ta apnar birthday-te ektu hashi anar jonno.
-        Apnar din-ta onek shundor katuk, ar shamner bochor-ta
-        apnar jonno onek bhalo kichu niye ashuk.
-      </p>
-
-      <button class="pink-btn" type="button"
-              id="secretButton" onclick="revealSecret()"
-              style="margin-top:24px">
-        There's a little secret ♡
-      </button>
-
-      <div class="secret-message" id="secretMessage">
         <p>
-          Shobshomoy bhalo thakben, nijer kheyal rakhben.
-          Apnar shopnogulo puron hok, ar apni jeno jibone
-          nijer pochonder jaygay pouchhate paren.
-          Apnar jonno mon theke onek onek dowa roilo. ♡
+            You probably know what to enter. 🤍
         </p>
 
-        <p class="secret-sign">
-          — Tanvir ♡
-        </p>
-      </div>
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="••••••"
+            maxlength="6"
+            inputmode="numeric"
+            autocomplete="off"
+        >
+
+        <button
+            class="unlock-btn"
+            onclick="unlockWebsite()">
+
+            Unlock 🤍
+
+        </button>
+
+        <div id="wrongPassword"></div>
+
     </div>
-  </section>
 
-  <footer>
-    Made with care, just for Ousa ♡<br>
-    May your days always be filled with light and happiness.
-  </footer>
-
-</main>
-
-<!-- PHOTO LIGHTBOX -->
-<div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
-  <button id="closeLightbox" type="button" aria-label="Close photo">×</button>
-  <img id="lightboxImage" src="" alt="Expanded photo">
 </div>
 
-<button id="backToTop" type="button" aria-label="Back to top">↑</button>
 
-<!-- Part 2-er JavaScript ekhane paste korbe -->
+
+<!-- ==================================================
+     HERO
+================================================== -->
+
+<section class="hero">
+
+    <div class="kitty kitty-left">
+        🐱
+    </div>
+
+    <div class="kitty kitty-right">
+        🐱
+    </div>
+
+    <div class="container hero-content">
+
+        <div class="small">
+            A little something for you
+        </div>
+
+        <h1 class="serif">
+            Ousa.
+        </h1>
+
+        <p class="hero-sub">
+
+            I couldn't be there to make your birthday
+            special in person...
+
+            <br>
+
+            So I made you a tiny little place
+            on the internet. 🤍
+
+        </p>
+
+        <button
+            class="start-btn"
+            onclick="goTo('cake')">
+
+            Open this 🤍
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     CAKE
+================================================== -->
+
+<section
+    class="cake-section"
+    id="cake">
+
+    <div class="container cake-content">
+
+        <div class="small">
+            A little birthday moment
+        </div>
+
+        <h2 class="cake-title serif">
+            Make a wish. 🎂
+        </h2>
+
+        <p class="cake-sub">
+
+            Tap the candle when you're ready.
+
+        </p>
+
+
+        <div class="cake">
+
+
+            <div class="plate"></div>
+
+
+            <div class="cake-body"></div>
+
+
+            <div class="cake-top"></div>
+
+
+            <div class="cream"></div>
+
+
+            <div
+                class="candle"
+                onclick="blowCandle()">
+
+
+                <div
+                    class="flame"
+                    id="flame">
+                </div>
+
+
+                <div
+                    class="smoke"
+                    id="smoke">
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="candle-message"
+            id="candleMessage">
+
+            Tap the flame 🕯️
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     LETTER
+================================================== -->
+
+<section
+    class="letter-section"
+    id="letter">
+
+    <div class="container letter">
+
+        <div class="small">
+            From me, to you
+        </div>
+
+        <h2 class="serif">
+            Happy Birthday. 🤍
+        </h2>
+
+        <p>
+
+            Actually, apnar birthday-te apnake wish korar
+            jonno ami onekdin dhorei wait kortesilam.
+
+        </p>
+
+        <p>
+
+            Kivabe wish korbo, ki bolbo—
+            egula niyeo onekbar bhebechi.
+
+        </p>
+
+        <p>
+
+            In the end, I thought...
+
+            maybe a simple "Happy Birthday"
+            doesn't really say everything
+            I wanted to say.
+
+        </p>
+
+        <div class="divider"></div>
+
+        <p>
+
+            Apni hoyto janen, hoyto janen na—
+
+            but somehow, you became someone
+
+            <span class="highlight">
+                really special to me.
+            </span>
+
+        </p>
+
+        <p>
+
+            Apnar sathe ektu kotha bola-o
+            amar kache sometimes onek kichu mean kore.
+
+        </p>
+
+        <p>
+
+            Kharap ekta din-o kokhono kokhono
+            just apnar sathe ektu kotha bole
+            ektu better hoye jay.
+
+        </p>
+
+        <p>
+
+            And I don't think you even realize
+            how much that means to me.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     WISHES
+================================================== -->
+
+<section class="wishes">
+
+    <div class="container">
+
+        <div class="small">
+            What I genuinely wish for you
+        </div>
+
+        <h2 class="serif">
+            Five little wishes ✨
+        </h2>
+
+        <div class="wish-grid">
+
+
+            <div class="wish">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Your Dreams
+                </h3>
+
+                <p>
+
+                    Chotobela theke apni je life-tar
+                    shopno dekhe eshechen,
+
+                    I genuinely wish that someday
+                    you get to live exactly that life.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="wish">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Your Future
+                </h3>
+
+                <p>
+
+                    Apnar sobcheye boro dream-gulo
+                    jeno ekdin apnar reality hoy.
+
+                    I hope you look back someday
+                    and feel proud of the person
+                    you became.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="wish">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Your Happiness
+                </h3>
+
+                <p>
+
+                    I hope life always gives you
+                    enough reasons to smile genuinely,
+                    even on the difficult days.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="wish">
+
+                <div class="number">
+                    04
+                </div>
+
+                <h3>
+                    Your Peace
+                </h3>
+
+                <p>
+
+                    I hope you find a life where
+                    you don't have to sacrifice
+                    your peace just to make others happy.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="wish">
+
+                <div class="number">
+                    05
+                </div>
+
+                <h3>
+                    Simply You
+                </h3>
+
+                <p>
+
+                    Joto kichui change hok,
+
+                    I hope you never lose
+                    the little things that make
+                    you genuinely happy.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     PHOTOS
+================================================== -->
+
+<section class="photos">
+
+    <div class="container">
+
+        <div class="small">
+            A few moments
+        </div>
+
+        <h2
+            class="serif"
+            style="
+                font-size:48px;
+                font-weight:400;
+                margin:20px 0;
+            ">
+
+            Little memories 🤍
+
+        </h2>
+
+        <p
+            style="
+                color:#aaa6b4;
+                line-height:1.9;
+                max-width:550px;
+                margin:auto;
+            ">
+
+            Some moments don't need a long explanation.
+
+            They are special simply because
+            they happened.
+
+        </p>
+
+
+        <div class="photo-grid">
+
+
+            <!-- PHOTO 1 -->
+
+            <div class="photo-card">
+
+                <img
+                    src="photo1.jpg"
+                    alt="A special memory">
+
+                <p>
+
+                    A little memory
+                    I wanted to keep here.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- PHOTO 2 -->
+
+            <div class="photo-card">
+
+                <img
+                    src="photo2.jpg"
+                    alt="Another special memory">
+
+                <p>
+
+                    Some moments
+                    just stay with you.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     PERSONAL MESSAGE
+================================================== -->
+
+<section class="personal">
+
+    <div class="container personal-box">
+
+        <div class="small">
+            Something I wanted you to know
+        </div>
+
+        <h2 class="serif">
+            Some people just matter.
+        </h2>
+
+        <p>
+
+            There doesn't always have to be
+            a huge reason.
+
+        </p>
+
+        <p>
+
+            Sometimes someone becomes important
+            simply because of the way they make
+            an ordinary day feel a little less ordinary.
+
+        </p>
+
+        <p>
+
+            That's probably the simplest way
+            I can explain what you mean to me.
+
+        </p>
+
+        <div class="divider"></div>
+
+        <p>
+
+            Ami jani na future amader dujonke
+            kothay niye jabe.
+
+        </p>
+
+        <p>
+
+            But one thing I genuinely wish for you
+            is that you get the life you've been
+            dreaming of since childhood.
+
+        </p>
+
+        <p>
+
+            Apnar dreams, apnar happiness,
+            apnar peace—
+
+            egula jeno ekdin shob apnar reality hoy.
+
+        </p>
+
+        <p>
+
+            Ar future-e amar jayga apnar life-e
+            joto tuku-i hok,
+
+            I will always hope that you stay happy,
+            stay peaceful, and become the person
+            you always wanted to be.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     FINAL
+================================================== -->
+
+<section class="final">
+
+    <div class="container">
+
+        <div class="small">
+            One last thing...
+        </div>
+
+        <h2 class="serif">
+
+            Maybe this little website
+            says more than I could.
+
+        </h2>
+
+        <button
+            class="reveal-btn"
+            onclick="revealSecret()">
+
+            Read the last part 🤍
+
+        </button>
+
+
+        <div
+            class="secret"
+            id="secret">
+
+
+            <p>
+
+                Ami apnake kono kichur jonno
+                pressure dite chai na.
+
+                Apnar nijer feelings,
+                apnar nijer decisions—
+
+                I will always respect them.
+
+            </p>
+
+
+            <p>
+
+                Right now, amader dujoner-i
+                samne onek important kichu ache.
+
+                So maybe the best thing I can do
+                is simply wish you well
+                and let life take its own time.
+
+            </p>
+
+
+            <p>
+
+                Maybe someday you'll understand
+                why I wanted to make this little thing
+                just for you.
+
+            </p>
+
+
+            <p>
+
+                And if someday I get to be
+                a small part of that beautiful life
+                you're dreaming of,
+
+                I'll consider myself really lucky.
+
+            </p>
+
+
+            <p>
+
+                But regardless of where life takes us,
+                I genuinely hope you end up happy.
+
+            </p>
+
+
+            <div class="divider"></div>
+
+
+            <p
+                class="serif"
+                style="
+                    font-size:27px;
+                    color:white;
+                ">
+
+                Happy Birthday, Ousa. 🤍
+
+            </p>
+
+
+            <p>
+
+                I hope you get the life you dreamed of
+                as a child,
+
+                the peace you need today,
+
+                and the happiness you deserve
+                for all the days yet to come.
+
+            </p>
+
+
+            <div class="signature">
+
+                With lots of good wishes,
+
+                <br><br>
+
+                — Tanvir
+
+            </div>
+
+
+            <div class="heart">
+                ♡
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
 
 <script>
-const passwordForm = document.getElementById("passwordForm");
-const passwordInput = document.getElementById("passwordInput");
-const passwordScreen = document.getElementById("passwordScreen");
-const mainContent = document.getElementById("mainContent");
-const errorMessage = document.getElementById("errorMessage");
 
-passwordForm.addEventListener("submit", function(event) {
-  event.preventDefault();
 
-  if (passwordInput.value.trim() === "131107") {
-    passwordScreen.style.display = "none";
-    mainContent.removeAttribute("inert");
-    document.body.style.overflowX = "hidden";
-  } else {
-    errorMessage.textContent = "Wrong password! Abar try korun ♡";
-    passwordInput.value = "";
-    passwordInput.focus();
-  }
-});
+/* ==================================================
+   PASSWORD
+================================================== */
+
+function unlockWebsite(){
+
+    const password =
+        document
+        .getElementById("passwordInput")
+        .value;
+
+    const correctPassword = "131107";
+
+    const message =
+        document
+        .getElementById("wrongPassword");
+
+
+    if(password === correctPassword){
+
+        document
+        .getElementById("passwordScreen")
+        .style.display = "none";
+
+        document.body.classList.remove("locked");
+
+    }
+
+    else{
+
+        message.innerHTML =
+            "Hmm... I think you know this one. :)";
+
+    }
+
+}
+
+
+/* Enter key */
+
+document
+.getElementById("passwordInput")
+.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            unlockWebsite();
+
+        }
+
+    }
+);
+
+
+
+/* ==================================================
+   SMOOTH SCROLL
+================================================== */
+
+function goTo(id){
+
+    document
+    .getElementById(id)
+    .scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+
+/* ==================================================
+   CANDLE
+================================================== */
+
+let candleBlown = false;
+
+
+function blowCandle(){
+
+    if(candleBlown){
+        return;
+    }
+
+    candleBlown = true;
+
+
+    const flame =
+        document.getElementById("flame");
+
+    const smoke =
+        document.getElementById("smoke");
+
+    const message =
+        document.getElementById("candleMessage");
+
+
+    /* Remove flame */
+
+    flame.style.display = "none";
+
+
+    /* Show smoke */
+
+    smoke.classList.add("show");
+
+
+    /* Change message */
+
+    message.innerHTML =
+        "Wish made. 🤍";
+
+
+    /* Small scroll after interaction */
+
+    setTimeout(function(){
+
+        document
+        .getElementById("letter")
+        .scrollIntoView({
+
+            behavior:"smooth"
+
+        });
+
+    },1200);
+
+}
+
+
+
+/* ==================================================
+   FINAL MESSAGE
+================================================== */
+
+function revealSecret(){
+
+    const secret =
+        document
+        .getElementById("secret");
+
+
+    secret.style.display = "block";
+
+
+    setTimeout(function(){
+
+        secret.scrollIntoView({
+
+            behavior:"smooth",
+
+            block:"center"
+
+        });
+
+    },100);
+
+}
+
 </script>
+
+
 </body>
+
 </html>
