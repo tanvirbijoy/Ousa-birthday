@@ -2271,7 +2271,7 @@ function revealSecret(){
 }
 
 /* ==================================================
-   PREVIOUS / NEXT SECTION NAVIGATION
+   ARROW-ONLY PAGE NAVIGATION
 ================================================== */
 
 const pageSections = Array.from(
@@ -2280,57 +2280,56 @@ const pageSections = Array.from(
 
 let currentSection = 0;
 
-function updateSectionNavigation() {
-    const distances = pageSections.map((section) =>
-        Math.abs(section.getBoundingClientRect().top)
+function showSection(index) {
+    currentSection = Math.max(
+        0,
+        Math.min(index, pageSections.length - 1)
     );
 
-    currentSection = distances.indexOf(
-        Math.min(...distances)
-    );
+    pageSections.forEach((section, i) => {
+        section.classList.toggle(
+            "active-page",
+            i === currentSection
+        );
 
-    document.getElementById("sectionCount").textContent =
-        String(currentSection + 1).padStart(2, "0") +
-        " / " +
-        String(pageSections.length).padStart(2, "0");
+        if (i === currentSection) {
+            section.scrollTop = 0;
+        }
+    });
 
-    document.getElementById("prevSection").disabled =
-        currentSection === 0;
+    const counter = document.getElementById("sectionCount");
+    const previous = document.getElementById("prevSection");
+    const next = document.getElementById("nextSection");
 
-    document.getElementById("nextSection").disabled =
+    if (counter) {
+        counter.textContent =
+            String(currentSection + 1).padStart(2, "0") +
+            " / " +
+            String(pageSections.length).padStart(2, "0");
+    }
+
+    if (previous) previous.disabled = currentSection === 0;
+    if (next) next.disabled =
         currentSection === pageSections.length - 1;
 }
 
 function navigateSection(direction) {
-    const targetIndex = Math.max(
-        0,
-        Math.min(
-            pageSections.length - 1,
-            currentSection + direction
-        )
-    );
-
-    pageSections[targetIndex].scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-
-    currentSection = targetIndex;
-    updateSectionNavigation();
+    showSection(currentSection + direction);
 }
 
-window.addEventListener(
-    "scroll",
-    updateSectionNavigation,
-    { passive: true }
-);
+/* Existing Open this button still works */
+function goTo(id) {
+    const targetIndex = pageSections.findIndex(
+        section => section.id === id
+    );
 
-window.addEventListener(
-    "resize",
-    updateSectionNavigation
-);
+    if (targetIndex !== -1) {
+        showSection(targetIndex);
+    }
+}
 
-updateSectionNavigation();
+/* Start on the hero page */
+showSection(0);
 
 /* ==================================================
    INTERACTIVE KITTIES
